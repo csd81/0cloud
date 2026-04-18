@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdfinfo \"/home/x/Desktop/claude/Cloud Programming_MSc_Juhasz_IId.pdf\")",
+      "Bash(python3 *)",
+      "Bash(awk '/^## /{print NR\": \"$0}' /home/x/Desktop/claude/gemini.txt)",
+      "Bash(awk '/^### /{print NR\": \"$0}' /home/x/Desktop/claude/gemini.txt)",
+      "Bash(awk NR>=470 && NR<=490 *)"
+    ]
+  }
+}

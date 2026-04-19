@@ -62,7 +62,7 @@ Az első központi problématerület, amelyet megvizsgálunk, az, amit az erőfo
 
 #### 2.1.1 Korlátozott erőforrású rendszerek: a nagyszámítógépek
 
-A számítástechnika korai időszakában a számítógépek nagyok, drágák és ritkák voltak, és jellemzően speciális számítóközpontokban kaptak helyet. Ezek a nagyszámítógépek különlegesen képzett műszaki személyzetet igényeltek mind az üzemeltetéshez, mind a programozáshoz. A gépek többnyire csak kevés, speciális célú programot futtattak, amelyeket egy-egy kutatási vagy üzleti feladatra készítettek.
+A számítástechnika korai időszakában a számítógépek nagyok, drágák és ritkák voltak, és jellemzően speciális számítóközpontokban kaptak helyet. Ezek a nagyszámítógépek (lásd a 2-1. ábrát) különlegesen képzett műszaki személyzetet igényeltek mind az üzemeltetéshez, mind a programozáshoz. A gépek többnyire csak kevés, speciális célú programot futtattak, amelyeket egy-egy kutatási vagy üzleti feladatra készítettek.
 
 A legtöbb rendszer egyszerre csak egyetlen programot tudott végrehajtani, ezért a futási időréseket előre le kellett foglalni. Mivel a számítógépeket központilag helyezték el és kezelték, a rendszergazdák optimalizált futtatási ütemterveket tudtak készíteni, amelyek magas kihasználtságot és ebből következően alacsonyabb fajlagos költséget eredményeztek. Fontos megjegyezni, hogy egy számítógépes rendszer egységnyi működési költsége erősen függ a kihasználtságtól. Ha egy rendszer, amelynek induló költsége például 10 000 USD, 100 000 órán keresztül, vagyis nagyjából 11 éven át, 100%-os kihasználtsággal működik, akkor egy óra programfuttatás költsége 0,1 dollár. Ha ugyanez a rendszer az idő 90%-ában tétlen, akkor az effektív programfuttatási költség 1 USD/órára nő. Ezért a magas kihasználtság fenntartása alapvető cél volt az ilyen rendszerek üzemeltetésében.
 
@@ -72,7 +72,15 @@ A későbbi technológiai fejlődés nyomán megjelentek az időosztásos és id
 - Időszeletelt, multiplexált működés esetén minden felhasználói program csökkentett sebességgel futott. A teljesítménycsökkenés arányos volt az egyidejűleg csatlakozott felhasználók számával.
 - A központi adminisztráció szigorú szabályokat eredményezett, amelyek meghatározták, hogy mikor és hogyan lehetett hozzáférni a rendszerhez, illetve milyen programok futtathatók rajta.
 
-Érdemes megfigyelni a rendszer architektúráját bemutató ábrát is, amelyen a terminálok a központi kiszolgálóhoz kapcsolódnak. Ez már erősen emlékeztet egy modern hálózatba kapcsolt számítógépes rendszerre. A különbség az, hogy a terminálok ekkor még nem valódi számítógépek voltak, csupán bemeneti és kimeneti eszközök, amelyek a központi géphez csatlakoztak.
+*2-1. ábra. Tipikus nagyszámítógépes rendszer az 1960-as években*
+
+^1 Kép forrása: https://alness.gnomio.com/pluginfile.php/209/mod_resource/content/1/On-line%20Resources/C%20Systems%20Int2/page_25.htm
+
+Érdemes megfigyelni a rendszer architektúráját bemutató 2-2. ábrát is, amelyen a terminálok a központi kiszolgálóhoz kapcsolódnak. Ez már erősen emlékeztet egy modern hálózatba kapcsolt számítógépes rendszerre. A különbség az, hogy a terminálok ekkor még nem valódi számítógépek voltak, csupán bemeneti és kimeneti eszközök, amelyek a központi géphez csatlakoztak.
+
+*2-2. ábra. Nagyszámítógépes rendszer architektúrája több terminállal*
+
+^2 Kép forrása: E. Malmborg és B. Sundgren, "Integration of statistical information systems-theory and practice," Seventh International Working Conference on Scientific and Statistical Database Management, Charlottesville, VA, USA, 1994, 80-89. o., doi: 10.1109/SSDM.1994.336959.
 
 #### 2.1.2 Személyi számítógépek, hálózatok és kliens-szerver rendszerek
 
@@ -84,11 +92,19 @@ A számítógépekkel együtt a perifériák iránti igény is megjelent. A felh
 
 Szerencsére a PC-forradalommal együtt a számítógépes hálózati technológia is megfizethetővé vált. A helyi hálózatok lehetővé tették, hogy a PC-k kommunikáljanak egymással, ami lendületet adott az olyan köztes szoftverek fejlesztésének, amelyek megkönnyítették az adatok és a perifériák megosztását. Egy sikeres példa erre a Novell NetWare volt, amely lehetővé tette a kisvállalkozások számára nyomtatószerverek létrehozását, vagyis kevesebb nyomtató hatékonyabb kihasználását, valamint közös könyvtárak használatát, amelyekre a felhasználók elhelyezhették a megosztandó adatokat.
 
-Az 1980-as évektől kezdve a hálózati technológia rendkívül gyors fejlődésnek indult. Az Ethernet-hálózatok általánossá váltak, a rendelkezésre álló sávszélesség pedig néhány évente ugrásszerűen nőtt. A helyi hálózatokat hamarosan követték a földrajzilag távoli számítógépek összekapcsolását lehetővé tevő nagy kiterjedésű hálózatok. A különálló, elszigetelt hálózati „szigetekre” építve, valamint a TCP/IP és a Domain Name System technológiák elterjedésével kialakult a globális Internet, amelyhez az 1990-es évek végére a legtöbb ország csatlakozott.
+Az 1980-as évektől kezdve a hálózati technológia rendkívül gyors fejlődésnek indult. Az Ethernet-hálózatok általánossá váltak, a rendelkezésre álló sávszélesség pedig néhány évente ugrásszerűen nőtt, amint azt a 2-3. ábra is mutatja. A helyi hálózatokat hamarosan követték a földrajzilag távoli számítógépek összekapcsolását lehetővé tevő nagy kiterjedésű hálózatok. A különálló, elszigetelt hálózati „szigetekre” építve, valamint a TCP/IP és a Domain Name System technológiák elterjedésével kialakult a globális Internet, amelyhez az 1990-es évek végére a legtöbb ország csatlakozott.
+
+*2-3. ábra. A hálózati sávszélesség növekedése az évek során*
+
+^3 Kép forrása: https://www.nngroup.com/articles/law-of-bandwidth/
 
 A nem megosztott számítógépek gyors elterjedése után az intézmények többsége felismerte, hogy a megosztásra továbbra is szükség van, méghozzá pénzügyi és működési hatékonysági okokból egyaránt. A hálózatok biztosították azt az összekötő infrastruktúrát, amelyre az elosztott számítástechnikai rendszerek épülhettek.
 
-Az elosztott rendszer legegyszerűbb formája a kliens-szerver architektúra, amelyben egy központi szerver jól meghatározott funkcionalitást nyújt, amelyet több kliens is igénybe vehet. A szerverek a megvalósított funkciójuknak megfelelően szolgálják ki a klienskéréseket. Gyakori példák az FTP-, e-mail-, időkiszolgáló-, adatbázis- és webszerverek. Fontos hangsúlyozni, hogy a szerverek egy adott funkció vagy alkalmazástípus kiszolgálására specializálódnak. Ahhoz, hogy egy kliens használni tudjon egy adott szervert, ismernie kell annak elérési módját és használati részleteit. A kliens-szerver rendszerek érdekes programozási kihívásokat vetnek fel, amelyeket a következő alfejezetben vizsgálunk meg.
+Az elosztott rendszer legegyszerűbb formája a kliens-szerver architektúra, amelyet a 2-4. ábra szemléltet, és amelyben egy központi szerver jól meghatározott funkcionalitást nyújt, amelyet több kliens is igénybe vehet. A szerverek a megvalósított funkciójuknak megfelelően szolgálják ki a klienskéréseket. Gyakori példák az FTP-, e-mail-, időkiszolgáló-, adatbázis- és webszerverek. Fontos hangsúlyozni, hogy a szerverek egy adott funkció vagy alkalmazástípus kiszolgálására specializálódnak. Ahhoz, hogy egy kliens használni tudjon egy adott szervert, ismernie kell annak elérési módját és használati részleteit. A kliens-szerver rendszerek érdekes programozási kihívásokat vetnek fel, amelyeket a következő alfejezetben vizsgálunk meg.
+
+*2-4. ábra. Egy általános kliens-szerver architektúra*
+
+^4 Kép forrása: https://slideplayer.com/slide/5708626/
 
 #### 2.1.3 Szuperszámítógépek
 
@@ -100,19 +116,127 @@ A programfuttatás jellemzően kötegelt végrehajtási módban történik. Ez a
 
 Ez erősen emlékeztet a korai nagyszámítógépes rendszerekre, ahol a felhasználóknak előre kellett lefoglalniuk a számítási időt a programjaik futtatásához. A szuperszámítógépek megosztása elengedhetetlen ahhoz, hogy magas kihasználtságot lehessen elérni, és így az üzemeltetési költség a lehető legalacsonyabb maradjon.
 
-A szuperszámítógépek teljesítményét az egy másodperc alatt végrehajtható lebegőpontos műveletek számával mérik, ezt flop/s formában adják meg. A teljesítményt általában a flop ezerszereseinek megfelelő mértékegységekben fejezik ki, például Mflop/s, Gflop/s, Tflop/s, Pflop/s és így tovább. Az első szuperszámítógépnek tekintett rendszer a Control Data Corporation által gyártott CDC 6600 volt, amelyet később a Cray Research Cray-1 rendszere követett. Az első 1 Gflop/s teljesítményt elérő rendszer a Cray Y-MP volt. A következő mérföldkő, az 1 Tflop/s, az ASCI Red rendszerhez köthető. A petaflops tartományt először az IBM Roadrunner érte el. A könyv írásának idején már folyamatban van az első exaflop/s teljesítményű szuperszámítógép megvalósítása is.
+A szuperszámítógépek teljesítményét az egy másodperc alatt végrehajtható lebegőpontos műveletek számával mérik, ezt flop/s formában adják meg. A teljesítményt általában a flop ezerszereseinek megfelelő mértékegységekben fejezik ki, például Mflop/s, Gflop/s, Tflop/s, Pflop/s és így tovább. Az első szuperszámítógépnek tekintett rendszer a Control Data Corporation által gyártott CDC 6600 volt, amelyet később a Cray Research Cray-1 rendszere követett. Az első 1 Gflop/s teljesítményt elérő rendszer a Cray Y-MP volt. A következő mérföldkő, az 1 Tflop/s, az ASCI Red rendszerhez köthető. A petaflops tartományt először az IBM Roadrunner érte el. A nevezetes szuperszámítógépek legfontosabb hardvertulajdonságait az 1. táblázat foglalja össze. A könyv írásának idején már folyamatban van az első exaflop/s teljesítményű szuperszámítógép megvalósítása is.
+
+**1. táblázat. Nevezetes szuperszámítógép-rendszerek és fő rendszerjellemzőik**
+
+| Szuperszámítógép | Fő jellemzők |
+| --- | --- |
+| CDC 6600 (1964) | CPU: 60 bites processzor @ 10 MHz<br>Memória: legfeljebb 982 kB (131000 x 60 bit)<br>Teljesítmény: 2 MIPS (millió utasítás másodpercenként) |
+| Cray-1 (1976) | CPU: 64 bites processzor @ 80 MHz<br>Memória: 8,39 MB (legfeljebb 1 048 576 szó)<br>Teljesítmény: 160 MFlop/s |
+| Cray Y-MP (1988) | Processzorok: 8 vektorprocesszor @ 167 MHz<br>Memória: 512 MB<br>Teljesítmény: 2,144 GFlop/s |
+| ASCI Red (1997) | Processzorok: 9298 Pentium II Xeon magprocesszor<br>Memória: 1,212 terabájt<br>Teljesítmény: 1,3 TFlop/s |
+| IBM Roadrunner (2008) | Processzorok: 12 960 IBM PowerXCell 8i és 6480 AMD Opteron kétmagos processzor<br>Memória: 103,6 terabájt<br>Teljesítmény: 1,042 PFlop/s |
+| Tianhe-2 (2013) | Processzorok: 32 000 Intel Xeon E5-2692 12C @ 2,200 GHz és 48 000 Xeon Phi 31S1P<br>Memória: 1345 terabájt<br>Teljesítmény: 33,86 PFlop/s |
+| Summit (2018) | Processzorok: 9216 POWER9 22 magos CPU és 27 648 NVIDIA Tesla V100 GPU<br>Memória: 4608 x 600 GB<br>Teljesítmény: 200 PFlop/s |
+| Fugaku (2020) | Processzorok: 158 976 Fujitsu A64FX CPU (48 mag)<br>Memória: 4 866 048 GB<br>Teljesítmény: 415 PFlop/s |
 
 A korai szuperszámítógépek szekvenciális számítógépek voltak, amelyek egyetlen utasításfolyamot hajtottak végre. Sebességüket speciális hardvertervezés, gyorsabb félvezető-technológia és a hagyományos gépekénél magasabb órajel biztosította. Később különféle hardveres gyorsítási technikák, például a vektorműveletek és a belső pipeline-olás is megjelentek. A modern szuperszámítógépek ezzel szemben párhuzamos rendszerek, amelyek gyakran több százezer processzormagot tartalmaznak.
 
-Az ilyen párhuzamos szuperszámítógépek csak akkor képesek valóban nagy teljesítményre, ha megfelelően megírt és optimalizált párhuzamos program fut rajtuk. Ezekhez a programokhoz jellemzően Fortran, C vagy C++ nyelveket használnak, megfelelő párhuzamos programozási kiterjesztésekkel, például OpenMP-vel, MPI-vel vagy CUDA-val.
+Az ilyen párhuzamos szuperszámítógépek csak akkor képesek valóban nagy teljesítményre, ha megfelelően megírt és optimalizált párhuzamos program fut rajtuk. Ezekhez a programokhoz jellemzően Fortran, C vagy C++ nyelveket használnak, megfelelő párhuzamos programozási kiterjesztésekkel, például OpenMP-vel [1], MPI-vel (Message Passing Interface) [2][3] vagy CUDA-val [4].
+
+*2-5. ábra. A Cray-1 szuperszámítógép*
+
+*2-6. ábra. A Tianhe-2 szuperszámítógép*
+
+*2-7. ábra. A Summit szuperszámítógép*
+
+*2-8. ábra. A Fugaku szuperszámítógép*
 
 ### 2.2 Kliens-szerver rendszerek programozása
 
 Amint korábban említettük, az elosztott rendszerek legegyszerűbb formája a kliens-szerver architektúra. Ebben a részben ezeknek a rendszereknek a programozási vonatkozásait vizsgáljuk meg. Az itt áttekintett technológiák mind azzal a céllal születtek, hogy magasabb absztrakciós szintre emeljék a programozást, növeljék a fejlesztők hatékonyságát, és ezzel párhuzamosan javítsák a létrejövő kód minőségét és karbantarthatóságát.
 
-Emlékeztetőként: egy általános kliens-szerver rendszerben a kliens feladata különféle kérések elküldése a szervernek, majd a válasz megvárása. A szerver folyamatosan figyeli a beérkező kéréseket, értelmezi azokat, kiszolgálja a kérést, majd előállítja és visszaküldi a választ a kliensnek.
+Emlékeztetőként a 2-9. ábra egy általános kliens-szerver rendszer architektúráját mutatja. A kliens feladata különféle kérések elküldése a szervernek, majd a válasz megvárása. A szerver folyamatosan figyeli a beérkező kéréseket, értelmezi azokat, kiszolgálja a kérést, majd előállítja és visszaküldi a választ a kliensnek.
 
-Az ilyen rendszerek programozásának klasszikus megközelítése az üzenetküldés, amelyhez az operációs rendszer olyan függvényeit használjuk, amelyek hálózati kapcsolatot létesítenek a szerverrel, majd elküldik az összeállított üzenetet, és fogadják a választ. Ez a megközelítés működőképes, de sok ismétlődő, alacsony szintű részletet terhel a fejlesztőre. Éppen ezért a kliens-szerver programozás történetében számos olyan technológia jelent meg, amely ezeket a részleteket igyekezett elrejteni, és a fejlesztő számára kényelmesebb, magasabb szintű programozási modellt kínálni.
+*2-9. ábra. Kérés-válasz üzenetváltás egy kliens-szerver rendszerben*
+
+Az ilyen rendszerek programozásának klasszikus megközelítése az üzenetküldés, amelyhez az operációs rendszer olyan függvényeit használjuk, amelyek hálózati kapcsolatot létesítenek a szerverrel, majd elküldik az összeállított üzenetet, és fogadják a választ. Ennek egy C nyelvű példáját az alábbi kódrészlet mutatja.^5
+
+```c
+/****************** KLIENSKÓD ****************/
+#include <stdio.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <string.h>
+int main(){
+int clientSocket;
+char buffer[1024];
+struct sockaddr_in serverAddr;
+socklen_t addr_size;
+/*---- A socket létrehozása. A három argumentum: ----*/
+/* 1) Internet tartomány 2) stream socket 3) alapértelmezett protokoll (ebben az esetben TCP) */
+clientSocket = socket(PF_INET, SOCK_STREAM, 0);
+/*---- A szervercím struktúra beállítása ----*/
+/* Címcsalád = Internet */
+serverAddr.sin_family = AF_INET;
+/* Portszám beállítása a helyes bájtsorrendet biztosító htons függvénnyel */
+serverAddr.sin_port = htons(7891);
+/* IP-cím beállítása localhostra */
+serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+/* A kitöltő mező minden bitjét állítsuk 0-ra */
+memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
+/*---- A socket csatlakoztatása a szerverhez a címstruktúra segítségével ----*/
+addr_size = sizeof serverAddr;
+connect(clientSocket, (struct sockaddr *) &serverAddr, addr_size);
+/*---- A szerver üzenetének beolvasása a pufferbe ----*/
+recv(clientSocket, buffer, 1024, 0);
+/*---- A kapott üzenet kiírása ----*/
+printf("Data received: %s",buffer);
+return 0;
+}
+```
+
+^5 https://www.programminglogic.com/example-of-client-server-program-in-c-using-sockets-and-tcp/
+
+Ugyanez a funkcionalitás Java nyelven a következőképpen néz ki.
+
+```java
+import java.io.*;
+import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class MyClient {
+private final int PORT = 10000;
+private Socket server;
+private BufferedReader in;
+private PrintWriter out;
+public static void main(String[] args) {
+new MyClient().start();
+}
+public void start(){
+try {
+System.out.println("Client is started...");
+// 1. kapcsolat létrehozása a szerverrel
+server = new Socket("localhost", PORT);
+System.out.println("client connected... ");
+// 2. kommunikációs folyamobjektumok létrehozása
+in = new BufferedReader(
+new InputStreamReader(server.getInputStream()));
+out = new PrintWriter(server.getOutputStream(), true);
+// 3. kérés elküldése
+System.out.println("Sending '" + msg + "' to server");
+out.println("HELLO");
+// 4. válasz fogadása
+String response = in.readLine();
+System.out.println("Response from server: " + response);
+} catch (IOException ex) {
+Logger.getLogger(MyClient.class.getName()).log(Level.SEVERE, null, ex);
+} finally{
+// 5. kommunikációs csatornák lezárása
+try{
+if (in != null) in.close();
+if (out != null) out.close();
+if (server != null) server.close();
+}catch(IOException e){
+e.printStackTrace();
+}
+}
+}
+}
+```
+
+Mivel az üzenetváltás a kliens-szerver rendszerek egyik legalapvetőbb működési lépése, ezt az utasítássorozatot egy nagyobb alkalmazásban sokszor meg kell ismételni. Ez azt eredményezi, hogy a forráskódban többször is majdnem azonos kódrészletek jelennek meg. A fejlesztők ezt nagyon gyorsan saját, az üzenetváltások kezelésére szolgáló függvényekkel váltanák ki. Szabványosítás nélkül azonban minden rendszer saját, ad hoc függvénykészletet, paraméterátadási módot és hibakezelési konvenciót használna, ami hosszú távon rendkívül megnehezítené a kód karbantartását és a különböző rendszerek együttműködését.
 
 #### 2.2.1 Távoli eljáráshívás
 
@@ -266,7 +390,9 @@ A webszerverekhez hasonlóan a webszolgáltatások esetében is az ajánlás az,
 
 A Representational State Transfer, röviden REST, Roy Fielding 2000-ben készült doktori munkájának eredménye, és egy alternatív megközelítés alapját adja nagyméretű elosztott szolgáltatási rendszerek létrehozásához. Mivel Fielding elégedetlen volt a főáramú szolgáltatásorientált megközelítések bonyolultságával, egy egyszerű, erőforrás-orientált módot javasolt a szolgáltatások leírására. Míg a hagyományos megközelítések a számítás fogalma köré szerveződtek, vagyis valamilyen művelet végrehajtására a kliens nevében, addig a REST az adatok szempontjából közelítette meg a problémát. Fielding azt javasolta, hogy minden, akár egyetlen bájt a memóriában is, rendelkezhet URL-lel, amelyen keresztül az állapota lekérdezhető és módosítható. Ehhez elegendő a GET és a POST HTTP-parancsok használata, valamint az erőforrásra mutató URL. Kidolgozott egy módszert a szolgáltatásinterfészek leírására URL-ek, illetve GET és POST parancsok segítségével.
 
-A REST-alapú, vagyis RESTful szolgáltatások egyszerűsége miatt ez a megközelítés nagyon gyorsan népszerűvé vált, és komoly véleményütközést okozott a webszolgáltatási közösségen belül. Mára azonban úgy tűnik, hogy a REST egyértelműen győzött, és az XML-alapú webszolgáltatásokat új rendszerek fejlesztésénél már csak kivételes esetekben használják. A REST részletei megtalálhatók Fielding doktori értekezésében, illetve a következő Wikipedia-bejegyzésben: https://en.wikipedia.org/wiki/Representational_state_transfer.
+A REST-alapú, vagyis RESTful szolgáltatások egyszerűsége miatt ez a megközelítés nagyon gyorsan népszerűvé vált, és komoly véleményütközést okozott a webszolgáltatási közösségen belül. Mára azonban úgy tűnik, hogy a REST egyértelműen győzött, és az XML-alapú webszolgáltatásokat új rendszerek fejlesztésénél már csak kivételes esetekben használják. A REST részletei megtalálhatók Fielding doktori értekezésében,^7 illetve a következő Wikipedia-bejegyzésben: https://en.wikipedia.org/wiki/Representational_state_transfer.
+
+^7 https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
 
 ### 2.4 Grid számítás
 
@@ -274,9 +400,9 @@ A grid számítás az 1990-es évek végén két egymástól független, de egy 
 
 Ezzel párhuzamosan a hálózati és elosztott rendszerek fejlettsége elérte azt a szintet, amely lehetővé tette nagyméretű számítási klaszterek létrehozását helyi hálózatra kapcsolt számítógépekből. A kutatók ezt a modellt kiterjesztették a nagy kiterjedésű hálózatokra is: távoli számítógépeket kívántak összekapcsolni, hogy nagy virtuális párhuzamos számítógépeket hozzanak létre. Az első irányzat a szuperszámítógépek összekötésére épült, a második pedig számítógép-klaszterek hasonló célú összekapcsolását tervezte. Mindkét megközelítés közös célja a meglévő számítási erőforrások jobb kihasználása volt, egy hatékony terheléselosztó szoftverréteg segítségével.
 
-A Grid Computing elnevezést a számítási erőforrásokhoz való hozzáférés és a villamos energia elérésének analógiája ihlette. Az Egyesült Államokban a villamosenergia-elosztó rendszert Power Gridnek nevezik. Az alapgondolat az volt, hogy a kutatók földrajzi elhelyezkedésüktől függetlenül juthassanak számítási és tárolási kapacitáshoz. Ha egy számítógép csatlakozik a Gridhez, hozzáférhet az erőforrásokhoz, ahogyan az elektromos hálózatra csatlakoztatott eszköz is energiához jut. A korai fejlesztések többféle szoftverrendszert eredményeztek, amelyek magas szintű programozási felületet kívántak biztosítani elosztott klasztereken futó párhuzamos programok létrehozásához és végrehajtásához. Az ismert rendszerek közé tartozott a Parallel Virtual Machine (PVM), a Legion és a Globus Toolkit. Ezek a korai megoldások kezdetben kisebb, klaszteralapú rendszerekre összpontosítottak, és azt vizsgálták, miként használhatók ki hatékonyan az egyetemi klaszterekben rendelkezésre álló, éppen tétlen gépek. A tapasztalatok bővülésével azonban egyre nagyobb, földrajzilag elosztott rendszerek kiépítésére is sor került. 2005-re csaknem minden fejlett ország létrehozta saját nemzeti gridrendszerét. Európában a CERN vezetésével megvalósított DataGrid projekt sikeresen demonstrálta ezt a koncepciót, jóllehet ez a rendszer egyetlen konkrét feladatra, a Large Hadron Collider által előállított adatok feldolgozására készült.
+A Grid Computing elnevezést a számítási erőforrásokhoz való hozzáférés és a villamos energia elérésének analógiája ihlette. Az Egyesült Államokban a villamosenergia-elosztó rendszert Power Gridnek nevezik. Az alapgondolat az volt, hogy a kutatók földrajzi elhelyezkedésüktől függetlenül juthassanak számítási és tárolási kapacitáshoz. Ha egy számítógép csatlakozik a Gridhez, hozzáférhet az erőforrásokhoz, ahogyan az elektromos hálózatra csatlakoztatott eszköz is energiához jut. A korai fejlesztések többféle szoftverrendszert eredményeztek, amelyek magas szintű programozási felületet kívántak biztosítani elosztott klasztereken futó párhuzamos programok létrehozásához és végrehajtásához. Az ismert rendszerek közé tartozott a Parallel Virtual Machine (PVM) [8], a Legion [9] és a Globus Toolkit [10]. Ezek a korai megoldások kezdetben kisebb, klaszteralapú rendszerekre összpontosítottak, és azt vizsgálták, miként használhatók ki hatékonyan az egyetemi klaszterekben rendelkezésre álló, éppen tétlen gépek. A tapasztalatok bővülésével azonban egyre nagyobb, földrajzilag elosztott rendszerek kiépítésére is sor került. 2005-re csaknem minden fejlett ország létrehozta saját nemzeti gridrendszerét. Európában a CERN vezetésével megvalósított DataGrid projekt [10] sikeresen demonstrálta ezt a koncepciót, jóllehet ez a rendszer egyetlen konkrét feladatra, a Large Hadron Collider által előállított adatok feldolgozására készült.
 
-A middleware-fejlesztések közül a legsikeresebbnek a Globus Toolkit bizonyult. Ez a rendszer arra törekedett, hogy új programozási absztrakciók, például a PVM vagy a Legion helyett meglévő rendszereket, szoftverkomponenseket és szabványos protokollokat, például az FTP-t használja fel. Egy Globus-publikáció példáján keresztül jól megérthetők a grid számítás alapelvei.
+A middleware-fejlesztések közül a legsikeresebbnek a Globus Toolkit bizonyult. Ez a rendszer arra törekedett, hogy új programozási absztrakciók, például a PVM vagy a Legion helyett meglévő rendszereket, szoftverkomponenseket és szabványos protokollokat, például az FTP-t használja fel. Egy Globus-publikáció [11] példáján keresztül jól megérthetők a grid számítás alapelvei.
 
 Tegyük fel, hogy egy kutató egy szimulációs programot kíván futtatni. Ez a program elosztott szimuláció, ráadásul interaktív módban működik. Az interaktív működés köztudottan nehezen kezelhető kötegelt végrehajtási környezetben, és még nagyobb kihívást jelent több helyszínt érintő esetben. Minden egyes helyszínnek elegendő erőforrást kell biztosítania ahhoz, hogy a program a többivel egy időben futhasson. Ideális lenne, ha ezt a koordinációt maga a rendszer végezné el a felhasználó helyett. Egy grid erőforrás-kezelő rendszerben ezért feltételezhető egy, az elosztott szimulációkra specializált erőforrás-közvetítő jelenléte, amely átveszi a konfigurációs feladatokat a felhasználótól. Ez a komponens a felhasználói igényt a számítógépes rendszerek számára értelmezhető formára fordítja le, majd megkezdi azoknak a szuperszámítógépes helyszíneknek a felkutatását, amelyek képesek kiszolgálni a kérést. Valós idejű információkat gyűjt egy második szintű közvetítőtől, a szuperszámítógépes erőforrás-közvetítőtől, és ennek segítségével több helyszínen egyidejűleg foglal le erőforrásokat a szimuláció végrehajtásához. Miután a közös erőforrás-allokáció megtörtént, a szimuláció elindul. A felhasználó mindebből csupán a kezdeti kérést és a futó szimulációs programot látja; a technikai részletek rejtve maradnak.
 
@@ -292,13 +418,17 @@ A grid számítás fejlődése során megjelent a szolgáltatásorientált szeml
 
 A beküldéses, vagyis push jellegű grid rendszerek egyik alternatívája az önkéntes számítási modell, amelyben a számítógépek tulajdonosai saját gépeik szabad erőforrásait ajánlják fel programok futtatására. A programok telepítése és a feladatok kiosztása lekéréses, vagyis pull jelleggel történik: a kliensek egy központi feladatadatbázishoz kapcsolódva kérnek munkát.
 
-Az ilyen rendszerek első és legismertebb példája a SETI@home projekt. A projekt 1999-ben indult a Kaliforniai Egyetem berkeley-i campusán azzal a céllal, hogy a tétlen számítógépes kapacitásokat rádióteleszkópos adatok elemzésére használják fel földönkívüli élet nyomainak keresésére. A rendszerben a felhasználók egy olyan programot telepítettek, amely képernyővédőként működött, de a véletlenszerű grafika megjelenítése helyett a SETI szerveréhez kapcsolódott, letöltött egy adatszegmenst, majd elvégezte annak elemzését. A rendszer leegyszerűsített architektúráját a 2-18. ábra mutatja.
+Az ilyen rendszerek első és legismertebb példája a SETI@home projekt. A projekt 1999-ben indult a Kaliforniai Egyetem berkeley-i campusán azzal a céllal, hogy a tétlen számítógépes kapacitásokat rádióteleszkópos adatok elemzésére használják fel földönkívüli élet nyomainak keresésére. A rendszerben^8 a felhasználók egy olyan programot telepítettek, amely képernyővédőként működött, de a véletlenszerű grafika megjelenítése helyett a SETI szerveréhez kapcsolódott, letöltött egy adatszegmenst, majd elvégezte annak elemzését. A rendszer leegyszerűsített architektúráját a 2-18. ábra mutatja.
 
-Érdekes sajátosság, hogy ebben a rendszerben az elemzőprogramokat futtatni kívánó fél a szerver oldalon jelenik meg, míg a számítási erőforrásokat biztosító felhasználók kliensként vesznek részt. További fontos tulajdonság, hogy a munkaelosztás teljesen automatikus, a működés pedig hibatűrő: a rendszer klienshibák vagy kapcsolatmegszakadások esetén is folyamatosan üzemképes marad. A projekt rendkívül sikeres volt: felhasználók milliói ajánlották fel számítógépük idejét, és az összesített számítási teljesítmény meghaladta a korszak vezető szuperszámítógépeiét.
+Érdekes sajátosság, hogy ebben a rendszerben az elemzőprogramokat futtatni kívánó fél a szerver oldalon jelenik meg, míg a számítási erőforrásokat biztosító felhasználók kliensként vesznek részt. További fontos tulajdonság, hogy a munkaelosztás teljesen automatikus, a működés pedig hibatűrő: a rendszer klienshibák vagy kapcsolatmegszakadások esetén is folyamatosan üzemképes marad. A projekt rendkívül sikeres volt: felhasználók milliói ajánlották fel számítógépük idejét, és az összesített számítási teljesítmény meghaladta a korszak vezető szuperszámítógépeiét. A projekt technikai részleteit a [12] hivatkozás tárgyalja.
 
 *2-18. ábra. A SETI@home rendszer architektúrája*
 
-A projekt sikere egy új alprojekt elindításához is vezetett, amely a futási környezet általánosítását és támogatását célozta. Ennek eredményeként jött létre a Berkeley Open Infrastructure for Network Computing, röviden BOINC, amelyet olyan projektek számára tettek elérhetővé, amelyek hasonló módon kívántak elosztott számítási erőforrásokat igénybe venni. A BOINC infrastruktúrát több mint harminc tudományos projekt használja; ezekben közel 800 000 aktív számítógép vesz részt, az összesített számítási teljesítmény pedig meghaladja a 40 petaFLOP/s értéket.
+^8 https://setiathome.berkeley.edu/sah_papers/cacm.php
+
+A projekt sikere egy új alprojekt elindításához is vezetett, amely a futási környezet általánosítását és támogatását célozta. Ennek eredményeként jött létre a Berkeley Open Infrastructure for Network Computing, röviden BOINC,^9 amelyet olyan projektek számára tettek elérhetővé, amelyek hasonló módon kívántak elosztott számítási erőforrásokat igénybe venni. A BOINC infrastruktúrát több mint harminc tudományos projekt használja; ezekben közel 800 000 aktív számítógép vesz részt, az összesített számítási teljesítmény pedig meghaladja a 40 petaFLOP/s értéket.
+
+^9 https://boinc.berkeley.edu/
 
 Hasonló, de a BOINC ernyőjén kívül működő projekt a Folding@home, amely a fehérjeszerkezet-kutatás egyik fontos platformja. A könyv írásának idején a projekt kiemelt célja olyan molekulák keresése volt, amelyek potenciális gyógyszerjelöltként szolgálhatnak a COVID-19 vírus elleni küzdelemben.
 
@@ -308,7 +438,7 @@ Az 1990-es évek végére, illetve a 2000-es évek elejére a számítógépek a
 
 Néhány éven belül ezért új iparág alakult ki: a kiszervezett webhoszting. Gazdaságosabbnak bizonyult egyetlen helyszínen, nagy sebességű összeköttetésekkel ellátott szerverfarmot üzemeltetni, és azon több kisebb vállalkozás webhelyeit hosztolni. A méretgazdaságosság alacsonyabb árakat eredményezett, a vállalatoknak nem kellett a webhelyüzemeltetés technikai részleteivel foglalkozniuk, és saját alaptevékenységükre koncentrálhattak. A webhosztingot hamarosan az általános hoszting követte, amelynek során a szolgáltató a megrendelő számára teljes számítógépes rendszereket kezelt és üzemeltetett, tetszőleges alkalmazások futtatásával. A vállalatok kedvelték ezt a modellt, mert a szolgáltatásokért fix havi díjat fizethettek, amely könnyen tervezhető volt az éves költségvetésben. Ez jelentette annak a modellnek a kezdetét, amelyet ma közüzemi számítástechnikának nevezünk.
 
-Az ilyen típusú számítástechnika üzleti lehetőségeit elsőként a SUN Microsystems ismerte fel a nagy informatikai vállalatok közül. Ez jól illeszkedett a „The Network Is The Computer” jelmondatukhoz. Ennek szellemében hozták létre a Sun Container megoldást, egy hordozható szerverkonténert, amelyet eredetileg olyan nagy ügyfelek számára terveztek, akiknek többlet számítási kapacitásra volt szükségük. A SUN 2005-ben ezeket a rendszereket már saját üzemeltetésben működtette, és az erőforrásokhoz használatalapú díjazás mellett biztosított hozzáférést. A Sun Grid számítási közüzemi szolgáltatás esetében az ár 1 amerikai dollár volt CPU-óránként, míg a Sun Grid tárolási közüzemi szolgáltatásnál 1 amerikai dollár gigabájtonként és havonta. A rendszer jelentős sikert aratott, azonban a 2008-as pénzügyi válság következtében a SUN csődbe jutott, ami a vállalat megszűnéséhez vezetett.
+Az ilyen típusú számítástechnika üzleti lehetőségeit elsőként a SUN Microsystems ismerte fel a nagy informatikai vállalatok közül. Ez jól illeszkedett a „The Network Is The Computer” jelmondatukhoz. Ennek szellemében hozták létre a Sun Container megoldást, egy hordozható szerverkonténert (lásd a 2-19. ábrát), amelyet eredetileg olyan nagy ügyfelek számára terveztek, akiknek többlet számítási kapacitásra volt szükségük. A SUN 2005-ben ezeket a rendszereket már saját üzemeltetésben működtette, és az erőforrásokhoz használatalapú díjazás mellett biztosított hozzáférést. A Sun Grid számítási közüzemi szolgáltatás esetében az ár 1 amerikai dollár volt CPU-óránként, míg a Sun Grid tárolási közüzemi szolgáltatásnál 1 amerikai dollár gigabájtonként és havonta. A rendszer jelentős sikert aratott, azonban a 2008-as pénzügyi válság következtében a SUN csődbe jutott, ami a vállalat megszűnéséhez vezetett.
 
 *2-19. ábra. A SUN Grid konténer*
 

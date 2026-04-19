@@ -2,7 +2,7 @@
 
 ![EFOP logó](../Cloud%20Programming_MSc_Juhasz_IId-1_2.png)
 
-# Felhőprogramozás (Cloud Programming)
+# Felhőprogramozás
 
 **Szerző:** Juhász Zoltán
 **Kiadó:** Pannon Egyetem, 2020
@@ -16,21 +16,21 @@
 
 - Előszó
 - 1 Bevezetés
-- 2 A múlt technológiai fejleményei: az út a Cloud Computinghoz
+- 2 A múlt technológiai fejlődése: út a felhőalapú számítástechnikához
   - 2.1 Számítási erőforrásokhoz való hozzáférés és megosztás
     - 2.1.1 Korlátozott erőforrású rendszerek – nagyszámítógépek (mainframe-ek)
     - 2.1.2 Személyi számítógépek, hálózatok és kliens-szerver rendszerek
     - 2.1.3 Szuperszámítógépek
   - 2.2 Kliens-szerver rendszerek programozása
-    - 2.2.1 Remote Procedure Call (Távoli eljáráshívás)
-    - 2.2.2 Remote Method Invocation (Távoli metódushívás)
+    - 2.2.1 Távoli eljáráshívás (Remote Procedure Call)
+    - 2.2.2 Távoli metódushívás (Remote Method Invocation)
     - 2.2.3 Érvek a lazán csatolt rendszerek mellett
   - 2.3 Szolgáltatás-orientált rendszerek
     - 2.3.1 XML alapú szolgáltatások – webszolgáltatások
     - 2.3.2 RESTful szolgáltatások
-  - 2.4 Grid computing
+  - 2.4 Grid számítástechnika
   - 2.5 Önkéntes erőforrás-megosztás
-  - 2.6 Hosting és a feltörekvő utility computing modell
+  - 2.6 Hoszting és a kialakuló közműszerű számítástechnika
   - 2.7 Virtualizáció
 - 3 A felhőtechnológia alapjai
   - 3.1 Alapfogalmak
@@ -43,19 +43,19 @@
     - 3.4.4 IBM és Oracle
   - 3.5 Árképzés
   - 3.6 Programozás
-- 4 Amazon AWS
-  - 4.1 IaaS réteg szolgáltatások
+- 4 Amazon Web Services (AWS)
+  - 4.1 IaaS-rétegbeli szolgáltatások
     - 4.1.1 Számítási (Compute) szolgáltatások
     - 4.1.2 Tárolási (Storage) szolgáltatások
     - 4.1.3 Hálózati szolgáltatások
-  - 4.2 PaaS réteg szolgáltatások
+  - 4.2 PaaS-rétegbeli szolgáltatások
     - 4.2.1 AWS Elastic Beanstalk
-  - 4.3 SaaS réteg szolgáltatások
+  - 4.3 SaaS-rétegbeli szolgáltatások
   - 4.4 Szolgáltatáskezelés és API-k
 - 5 Google Cloud Platform
-  - 5.1 GCP szolgáltatások az IaaS rétegben
-  - 5.2 PaaS réteg szolgáltatások
-  - 5.3 SaaS réteg szolgáltatások
+  - 5.1 GCP-szolgáltatások az IaaS-rétegben
+  - 5.2 PaaS-rétegbeli szolgáltatások
+  - 5.3 SaaS-rétegbeli szolgáltatások
 - 6 A Google Cloud Platform használata
   - 6.1 A GCP projekt
   - 6.2 GCP erőforrások elérésének módjai
@@ -68,16 +68,16 @@
     - 7.2.2 Apache Hadoop/MapReduce
     - 7.2.3 Apache Spark
   - 7.3 MapReduce és Spark feladatok futtatása GCP-n
-- 8 Adatfolyam-feldolgozás (Data stream processing)
+- 8 Adatfolyam-feldolgozás
   - 8.1 Stream algoritmusok
   - 8.2 Népszerű stream adatfeldolgozó keretrendszerek
     - 8.2.1 Spark Streaming
     - 8.2.2 Apache Flink
-    - 8.2.3 Apache Storm / Trident
-    - 8.2.4 Apache Kafka
-    - 8.2.5 Apache Beam/GCP Dataflow
-  - 8.3 Stream keretrendszerek összehasonlítása
-- 9 Cloud Functions
+    - 8.2.3 Apache Storm és Trident
+    - 8.2.4 Apache Kafka és Kafka Streams
+    - 8.2.5 Apache Beam és GCP Dataflow
+  - 8.3 Apache Beam és a GCP Dataflow
+- 9 Felhőfüggvények (Cloud Functions)
 - 10 Szolgáltatáskommunikáció: Pub/Sub
   - 10.1 Google Pub/Sub áttekintés
   - 10.2 Pub/Sub üzenetfolyam
@@ -88,7 +88,7 @@
   - 11.2 Cloud Translation
   - 11.3 Text-to-Speech
 - 12 Felhőszolgáltatás-orkesztráció
-  - 12.1 Komplex Optical Character Recognition (OCR) alkalmazás példa
+  - 12.1 Komplex optikai karakterfelismerő (OCR) alkalmazás példája
 - 13 Következtetések
 - Irodalomjegyzék
 
@@ -100,7 +100,7 @@ A felhőtechnológia a számítástechnika egy viszonylag új, ugyanakkor rendk�
 
 A könyv célja, hogy bevezetést nyújtson a felhőrendszerek programozásába. Mivel a felhőinfrastruktúrákat egyre inkább a nagy technológiai vállalatok magasan specializált adatközpontjai üzemeltetik, az egyéni fejlesztők és a kisebb cégek számára a valódi lehetőségek a szoftveres oldalon rejlenek. A témakörhöz kapcsolódó tananyag mennyisége hatalmas; ezért elsősorban a legalapvetőbb fogalmak, módszerek és programozási technikák bemutatására koncentrálunk, ami megfelelő alapot biztosít a hallgatóknak a speciális területek későbbi, mélyebb szintű tanulmányozásához.
 
-A könyv tartalma szorosan kapcsolódik a veszprémi Pannon Egyetem Műszaki Informatikai Karán oktatott *Cloud Programming* című MSc kurzus struktúrájához és tartalmához. Bár a mű bevezető jellegű, a kurzus elvégzésének előfeltétele a Java programozási nyelv ismerete, valamint a számítógép-architektúrák, az operációs rendszerek és az elosztott rendszerek alapfogalmainak megértése. A fejezeteket nem feltétlenül kell a könyvben szereplő sorrendben olvasni, de a témával még csak most ismerkedő olvasók számára ez a leginkább célravezető megközelítés.
+A könyv tartalma szorosan kapcsolódik a veszprémi Pannon Egyetem Műszaki Informatikai Karán oktatott *Felhőprogramozás* című MSc kurzus struktúrájához és tartalmához. Bár a mű bevezető jellegű, a kurzus elvégzésének előfeltétele a Java programozási nyelv ismerete, valamint a számítógép-architektúrák, az operációs rendszerek és az elosztott rendszerek alapfogalmainak megértése. A fejezeteket nem feltétlenül kell a könyvben szereplő sorrendben olvasni, de a témával még csak most ismerkedő olvasók számára ez a leginkább célravezető megközelítés.
 
 Bár a kézirat összeállítása során a legnagyobb gondossággal jártunk el, hibák és hiányosságok előfordulhatnak. Ezekért kizárólag a szerző felelős. A könyv jövőbeli javítása és bővítése érdekében az olvasók visszajelzéseit és építő jellegű megjegyzéseit örömmel fogadjuk.
 
@@ -114,9 +114,9 @@ Hálásan köszönjük az Európai Unió és a Magyar Kormány támogatását az
 
 Az elmúlt évtized során a „felhő” (cloud) közismert fogalommá vált. Adatainkat a felhőben tároljuk, és nap mint nap olyan szolgáltatásokat használunk, mint a Gmail, az Amazon, a Netflix, a Spotify, illetve különböző webáruházak és online hírszolgáltatások, anélkül, hogy belegondolnánk, fizikailag pontosan hol is találhatók, hogyan implementálták, vagy éppen miként üzemeltetik őket. Létezésüket és rendelkezésre állásukat (availability) magától értetődőnek vesszük.
 
-A számítástechnikai és IT-iparnak több évtizedes kutatás-fejlesztésre, valamint több ezer emberévnyi munkára volt szüksége ahhoz, hogy ezeket a rendszereket – és mindenekelőtt magát a felhőt – létrehozza. Mindannyian ismerjük a felhővel kapcsolatos divatos kifejezéseket (buzzwords): korlátlan tárhely és számítási kapacitás, igény szerinti (on-demand) használat, alacsony költségek, skálázhatóság (scalability), magas rendelkezésre állás (high availability), rugalmasság (elasticity) és szolgáltatásintegráció. Azt is tudjuk, hogy valahol a világban hatalmas adatközpontok működnek, amelyek a felhőinfrastruktúra gerincét adják. Ezeket a központokat túlnyomórészt globális technológiai óriásvállalatok üzemeltetik, hiszen elképesztően magas kezdeti befektetésre van szükség ahhoz, hogy valaki felhőszolgáltatóvá (cloud provider) váljon, és valóban globális léptékben tudjon szolgáltatásokat nyújtani.
+A számítástechnikai és IT-iparnak több évtizedes kutatás-fejlesztésre, valamint több ezer emberévnyi munkára volt szüksége ahhoz, hogy ezeket a rendszereket – és mindenekelőtt magát a felhőt – létrehozza. Mindannyian ismerjük a felhővel kapcsolatos divatos kifejezéseket: korlátlan tárhely és számítási kapacitás, igény szerinti használat, alacsony költségek, skálázhatóság, magas rendelkezésre állás, rugalmasság és szolgáltatásintegráció. Azt is tudjuk, hogy valahol a világban hatalmas adatközpontok működnek, amelyek a felhőinfrastruktúra gerincét adják. Ezeket a központokat túlnyomórészt globális technológiai óriásvállalatok üzemeltetik, hiszen elképesztően magas kezdeti befektetésre van szükség ahhoz, hogy valaki felhőszolgáltatóvá váljon, és valóban globális léptékben tudjon szolgáltatásokat nyújtani.
 
-Ez a könyv a felhőről szól, kifejezetten egy szoftverfejlesztő szemszögéből. Nem az üzemeltetési vagy a napi szintű menedzsmentkérdésekre fókuszálunk. Ehelyett azt vizsgáljuk meg, hogy ez az új „közeg” hogyan befolyásolja a szoftverfejlesztést, valamint az alkalmazások létrehozásának és telepítésének (deployment) módját. A felhővel kapcsolatos leggyakoribb kifejezések – *Cloud Computing* (felhőalapú számítástechnika), *Cloud Architecture* (felhőarchitektúra) és *Cloud Programming* (felhőprogramozás) – közül mi ez utóbbit fogjuk részletesen körüljárni.
+Ez a könyv a felhőről szól, kifejezetten egy szoftverfejlesztő szemszögéből. Nem az üzemeltetési vagy a napi szintű menedzsmentkérdésekre fókuszálunk. Ehelyett azt vizsgáljuk meg, hogy ez az új „közeg” hogyan befolyásolja a szoftverfejlesztést, valamint az alkalmazások létrehozásának és üzembe helyezésének módját. A felhővel kapcsolatos leggyakoribb kifejezések – *felhőalapú számítástechnika* (*Cloud Computing*), *felhőarchitektúra* (*Cloud Architecture*) és *felhőprogramozás* (*Cloud Programming*) – közül mi ez utóbbit fogjuk részletesen körüljárni.
 
 A könyv – és a hozzá kapcsolódó kurzus – célja nem csupán gyakorlati programozási tippek átadása. Bízom benne, hogy a kurzus végére a hallgatók szélesebb perspektívát és mélyebb megértést szereznek azokról az elméleti és technológiai hajtóerőkről, amelyek az IT-ipart a felhő irányába mozdították. A modern számítástechnika és szoftverfejlesztés főbb kihívásainak megértése érdekében a 2. fejezet rövid áttekintést nyújt azokról a kulcsfontosságú történelmi fejleményekről, amelyek a felhőtechnológia megszületésének előfutárai és előfeltételei voltak. Olyan témákat érintünk, mint az erőforrás-megosztás, a hálózatok evolúciója, a különféle nagy teljesítményű számítási rendszerek, valamint az elosztott rendszerek programozási kihívásai. Ezen technológiai területek érettsége biztosította azt az alapot, amelyre a modern felhő felépülhetett.
 
@@ -132,11 +132,11 @@ MSc kurzusunkon az elméleti anyagot gyakorlati programozási laborok kísérik,
 
 ---
 
-## 2. A múlt technológiai fejlődése: út a felhőalapú számítástechnikához (Cloud Computing)
+## 2. A múlt technológiai fejlődése: út a felhőalapú számítástechnikához
 
 A számítástechnika Szent Grálja egy olyan rendszer, amely kivételesen nagy teljesítményű, ingyenes vagy nagyon olcsó a használata, bárki számára hozzáférhető, megbízható és mindenütt jelenlévő, gyors, hatékony és egyszerű módot biztosít az alkalmazásfejlesztésre és -telepítésre, és ugyanakkor maximális felhasználói élményt és használhatóságot nyújt a végfelhasználók számára. Ezt a varázslatos rendszert még nem találtuk meg, de a felhő valószínűleg a létező jelöltek közül a legközelebb áll hozzá.
 
-Ennek a fejezetnek a célja, hogy bemutassa a nagy számítási rendszerekben jellemzően fellelhető problémákat, és áttekintse az elmúlt évtizedekben megoldásukra kitalált különféle technológiai megoldásokat. Célunk az is, hogy illusztráljuk: a Cloud Computing nem egy teljesen új, egyedi koncepció, hanem évtizedek szisztematikus kutatási és fejlesztési munkájának eredménye az elosztott számítási rendszerek területén.
+Ennek a fejezetnek a célja, hogy bemutassa a nagy számítási rendszerekben jellemzően fellelhető problémákat, és áttekintse az elmúlt évtizedekben megoldásukra kitalált különféle technológiai megoldásokat. Célunk az is, hogy illusztráljuk: a felhőalapú számítástechnika nem egy teljesen új, egyedi koncepció, hanem évtizedek szisztematikus kutatási és fejlesztési munkájának eredménye az elosztott számítási rendszerek területén.
 
 Ennek a fejezetnek a technológiai fejleményekről szóló áttekintése nem annyira az egyes konkrét technológiák technikai részleteire összpontosít (feltételezzük, hogy az olvasók már ismerik ezeket az alapvető témákat), hanem azokra a problémákra, amelyeket megoldani igyekeztek, arra, ahogyan ezt tették, valamint egy fogalmi út megrajzolására ("a pontok összekötése" révén), amely a felhőalapú számítástechnika megjelenéséhez vezet. Minden alfejezet végén hangsúlyozzuk, hogyan találja meg helyét egy adott technológia vagy annak alapvető fogalmai a modern felhőalapú számítási rendszerekben.
 
@@ -154,13 +154,13 @@ A későbbi technológiai fejlesztések időosztásos vagy időszeletelt működ
 - Időosztásos, multiplexelt módban minden felhasználói program csökkentett sebességgel futott. A teljesítménycsökkenés arányos volt az egyidejűleg csatlakoztatott felhasználók számával.
 - A központi adminisztráció szigorú szabályokat eredményezett, amelyeket be kellett tartani, és amelyek befolyásolták, hogyan és mikor lehet a rendszerhez hozzáférni, és milyen programokat lehet futtatni.
 
-*2-1. ábra: Tipikus mainframe számítógép-rendszer az 1960-as években.*
+*2-1. ábra: Tipikus nagyszámítógép-rendszer az 1960-as években.*
 
 ![2-1. ábra](<../Cloud Programming_MSc_Juhasz_IId-9_1.jpg>)
 
 Figyelje meg a rendszer architektúra diagramját (2-2. ábra), amely bemutatja, hogyan csatlakoztak a terminálok a központi szerverhez. Ez hasonlít egy modern hálózati számítógépes rendszerhez. A különbség az, hogy a terminálok nem valódi számítógépek; csak bemeneti és kimeneti képességekkel rendelkező eszközök, amelyek a központi számítógépes létesítményhez csatlakoznak.
 
-*2-2. ábra: Mainframe rendszerarchitektúra több terminállal.*
+*2-2. ábra: Nagyszámítógép-rendszer architektúrája több terminállal.*
 
 ![2-2. ábra](<../Cloud Programming_MSc_Juhasz_IId-10_1.png>)
 
@@ -170,7 +170,7 @@ Az 1980-as években induló Személyi Számítógép (PC) forradalom radikális 
 
 A számítógépekkel együtt szükség volt perifériákra is. A felhasználók kis nyomtatókat, szalagos adatmentő (tape backup) eszközöket stb. vásároltak. Ezeket az eszközöket jellemzően viszonylag ritkán használták. Üzleti környezetben az alkalmazottak privát nyomtatóhasználatának többletköltsége összekapcsolódott az adatmegosztás problémáival. Az egyes PC-k az adataikat a helyi merevlemezen tárolták. A nagyobb projektek különböző szakaszain dolgozó emberek kollégáik által bemenetként igényelt fájlokat másoltak és hordoztak maguknál. Nem sok változott a technológia fejlődésével, az adatátvitel a floppy lemezekről CD-re került.
 
-Szerencsére a PC-forradalommal együtt a számítógép-hálózati technológia is megfizethetővé vált. A helyi hálózatok (LAN) lehetővé tették a PC-k egymás közötti kommunikációját, ami elősegítette a köztesréteg- (middleware) szoftverek fejlesztését, amelyek megkönnyítették az adatok és perifériás eszközök megosztását. Egy ilyen sikeres termék volt a Novell NetWare, amely lehetővé tette a kisvállalkozások számára nyomtatószerverek létrehozását (kevesebb számú nyomtató használata sokkal magasabb kihasználtsági aránnyal) és megosztott könyvtárakat, amelyeken a felhasználók másokkal megoszthatták az adatokat.
+Szerencsére a PC-forradalommal együtt a számítógép-hálózati technológia is megfizethetővé vált. A helyi hálózatok (LAN) lehetővé tették a PC-k egymás közötti kommunikációját, ami elősegítette a köztesréteg-szoftverek (*middleware*) fejlesztését, amelyek megkönnyítették az adatok és perifériás eszközök megosztását. Egy ilyen sikeres termék volt a Novell NetWare, amely lehetővé tette a kisvállalkozások számára nyomtatószerverek létrehozását (kevesebb számú nyomtató használata sokkal magasabb kihasználtsági aránnyal) és megosztott könyvtárakat, amelyeken a felhasználók másokkal megoszthatták az adatokat.
 
 Az 1980-as évek óta a hálózati technológia fenomenális sebességgel fejlődött. Az Ethernet hálózatok általánossá váltak, néhány évente jelentős sávszélesség-növekedéssel, amint az a 2-3. ábrán látható. A helyi hálózatok után hamarosan földrajzilag távoli számítógépeket is össze lehetett kötni Wide Area Network (WAN) hálózatok segítségével. Különféle szegregált, szigetszerű számítógép-hálózatokra épülve, valamint a TCP/IP és Domain Name System technológiák alkalmazásával létrejött a globális Internet hálózat, amelyhez a legtöbb ország az 1990-es évek végére csatlakozott.
 
@@ -317,11 +317,11 @@ public class MyClient {
 
 Mivel az üzenetcsere a kliens-szerver rendszerek ilyen alapvető művelete, ezt az utasítássorozatot nagy alkalmazásokban sokszor meg kell ismételni. Ez közel azonos kódrészletek többszöri ismétlődéséhez vezet az alkalmazás forráskódjában. A fejlesztők ezeket gyorsan az üzenetcserét kezelő egyedi függvényekkel helyettesítenék. Szabványosítás nélkül azonban minden rendszer függvények, paraméterátadás és hibakezelési konvenciók eseti halmazát használná, ami a hosszú távú kódkarbantartást és az együttműködést nagyon bonyolulttá tenné.
 
-#### 2.2.1 Remote Procedure Call (Távoli eljáráshívás)
+#### 2.2.1 Távoli eljáráshívás (Remote Procedure Call)
 
-Nem meglepő, hogy ezt a problémát az elosztott rendszerek programozói közössége nagyon korán felfedezte, és megkezdődött a szabványosítási munka. Az első javaslat, amely befolyásossá vált, a Sun Microsystems *Remote Procedure Call* (RPC) volt [5]. Az RPC kulcsfilozófiája, hogy olyan programozási felületet biztosítson egy távoli szerver eléréséhez és használatához, amelyet a fejlesztők már ismernek. Ez a természetes közös absztrakció az eljárás/függvény hívás, amely minden programozó számára jól ismert. Ha el tudjuk rejteni a kapcsolatfelépítés, üzenetcsomagolás és -átvitel részleteit és bonyolultságait, a programozók jobban a programlogikára tudnak koncentrálni, és ezzel egyidejűleg a programok minősége is növekszik. Egy ilyen szabványosított rendszer csak akkor tud működni, ha létezik egy speciális futásidejű környezet (runtime), amely ezeket a háttérfeladatokat a programozó nevében elvégzi. Az elosztott rendszerek terminológiájában ezt a futásidejű környezetet *middleware*-nek (köztesrétegnek) nevezzük, amely egy szoftverréteg az elosztott alkalmazás és az operációs rendszer között. A middleware réteg szerepe egy közös absztrakciós réteg létrehozása, amelyet az elosztott rendszerben együttműködő összes fél ismer.
+Nem meglepő, hogy ezt a problémát az elosztott rendszerek programozói közössége nagyon korán felfedezte, és megkezdődött a szabványosítási munka. Az első javaslat, amely befolyásossá vált, a Sun Microsystems *Remote Procedure Call* (RPC) volt [5]. Az RPC kulcsfilozófiája, hogy olyan programozási felületet biztosítson egy távoli szerver eléréséhez és használatához, amelyet a fejlesztők már ismernek. Ez a természetes közös absztrakció az eljárás- vagy függvényhívás, amely minden programozó számára jól ismert. Ha el tudjuk rejteni a kapcsolatfelépítés, üzenetcsomagolás és -átvitel részleteit és bonyolultságait, a programozók jobban a programlogikára tudnak koncentrálni, és ezzel egyidejűleg a programok minősége is növekszik. Egy ilyen szabványosított rendszer csak akkor tud működni, ha létezik egy speciális futtatókörnyezet, amely ezeket a háttérfeladatokat a programozó nevében elvégzi. Az elosztott rendszerek terminológiájában ezt a futtatókörnyezetet köztesrétegnek (*middleware*) nevezzük, amely egy szoftverréteg az elosztott alkalmazás és az operációs rendszer között. A köztesréteg szerepe egy közös absztrakciós réteg létrehozása, amelyet az elosztott rendszerben együttműködő összes fél ismer.
 
-Ahhoz, hogy elérjük ezt a middleware (köztes)réteget (az RPC futásidejű környezetét), speciális kódrészleteket kell létrehozni, úgynevezett csonkokat (*stub*-okat), amelyek a kliens és szerver kódot a middleware-hez kapcsolják [6]. A 2-10. ábra illusztrálja az RPC hívás működését a csonkokon (stubokon) keresztül. A csonkokat egy RPC fordító generálja.
+Ahhoz, hogy elérjük ezt a köztesréteget, vagyis az RPC futtatókörnyezetét, speciális kódrészleteket kell létrehozni, úgynevezett csonkokat (*stubokat*), amelyek a kliens- és szerverkódot a köztesréteghez kapcsolják [6]. A 2-10. ábra illusztrálja az RPC-hívás működését a csonkokon keresztül. A csonkokat egy RPC-fordító generálja.
 
 *2-10. ábra: Az RPC mechanizmus megvalósítása*
 
@@ -345,9 +345,9 @@ Itt eltekintünk a megvalósítás és fordítási folyamat részleteitől, és 
     }
 ```
 
-#### 2.2.2 Remote Method Invocation (Távoli metódushívás)
+#### 2.2.2 Távoli metódushívás (Remote Method Invocation)
 
-A Java különleges helyet foglal el az elosztott rendszerekben platform-függetlensége miatt. A Java Virtual Machine azonos futási környezetet biztosít a Java alkalmazásoknak, függetlenül attól, hogy milyen hardvert és operációs rendszert használnak egy adott számítógépen. Mivel a Java támogatja az objektumok szerializációját (állapotuk bájtsorozattá alakítását), nemcsak adatokat, hanem Java osztályokat is lehet küldeni az egyik virtuális gépből (VM) a másikba. Ez a Java verziójú (vagy újra-implementált) RPC alapja, a Remote Method Invocation (RMI) technológia [7].
+A Java különleges helyet foglal el az elosztott rendszerekben platformfüggetlensége miatt. A Java virtuális gép egységes futtatási környezetet biztosít a Java alkalmazásoknak, függetlenül attól, hogy milyen hardvert és operációs rendszert használnak egy adott számítógépen. Mivel a Java támogatja az objektumok szerializációját (állapotuk bájtsorozattá alakítását), nemcsak adatokat, hanem Java-osztályokat is lehet küldeni az egyik virtuális gépből (VM) a másikba. Ez a Java-változatú, illetve Java-alapú újraimplementációja az RPC-nek: a *Remote Method Invocation* (RMI) technológia [7].
 
 Az RMI célja, hogy távoli metódushívási mechanizmust biztosítson Java programok számára. Mivel egy Java program a JVM-ben fut és elszigetelt a hardvertől, a standard Java metódushívási mechanizmus nem alkalmas távoli számítógépek elérésére. Az RMI tervezői bevezettek egy middleware réteget, amely az alapul szolgáló operációs rendszerrel együttműködve kapcsolatokat épít ki és adatokat továbbít egy távoli félhez. Ezen túlmenően, mivel a Java 100%-os objektumorientált nyelv, egy speciális absztrakciót – egy csonk (stub) osztályt – vezettek be, amely a távoli szervert a kliens számára normál Java objektumként reprezentálja a működés során.
 
@@ -456,7 +456,7 @@ A szolgáltatásorientáció 2000-től kezdett népszerűvé válni. Mint minden
 
 A middleware technológia első jelöltje az XML volt. Érdekes módon ez nem egy programozási nyelv, hanem egy jelölőnyelv. Az XML-t azonban mindig is számítógépek számára tervezték, nem embereknek, és szigorú, szabályalapú megközelítést hordoz az adatok és műveletek leírásához. Az ötlet az volt, hogy az XML-t használják a szolgáltatás funkcionalitásának leírására, valamint az adatkommunikációban és a szolgáltatáshívásokban is. Ez utóbbihoz további eszközöket kellett fejleszteni, amelyek a szolgáltatás interfészekből „stub"-okat generáltak a célprogramozási nyelvekhez. Nem meglepő módon az első XML-alapú szolgáltatási rendszerek RPC-stílusú szolgáltatáshívást használtak.
 
-#### 2.3.1 XML alapú szolgáltatások – web szolgáltatások
+#### 2.3.1 XML alapú szolgáltatások – webszolgáltatások
 
 Amikor az XML-t és a szolgáltatásorientációt a HTTP protokoll fölött használjuk, akkor Web Service (webszolgáltatás) technológiáról beszélünk. A webszolgáltatások olyan szolgáltatások, amelyeket az Interneten keresztül, webprotokollok használatával történő meghívásra terveztek. Céljuk az volt, hogy gerincét képezzék a vállalatok közötti (business-to-business, B2B) alkalmazások új generációjának, amely leegyszerűsíti az online üzletelést, és olyan rendszereket hoz létre, amelyek a jövőben könnyen karbantarthatók és módosíthatók. A 2-14. ábra szemlélteti egy webszolgáltatás-alapú szolgáltatásorientált rendszer általános architektúráját.
 
@@ -478,7 +478,7 @@ A Representational State Transfer (röviden REST) Roy Fielding 2000-es PhD munk�
 
 A REST-alapú vagy RESTful szolgáltatások egyszerűsége miatt ez a megközelítés nagyon gyorsan népszerűvé vált, valódi véleménykülönbséget okozva a webszolgáltatás közösségben. Mindazonáltal mára úgy tűnik, a REST a tiszta győztes, az XML-alapú Web Service-eket már csak kivételes körülmények között használják új rendszerfejlesztéshez. A REST részletei megtalálhatók Fielding disszertációjában⁷ vagy a következő Wikipédia bejegyzésben: https://en.wikipedia.org/wiki/Representational_state_transfer.
 
-### 2.4 Grid computing
+### 2.4 Grid számítástechnika
 
 A Grid Computing az 1990-es évek végén jelent meg két független, egyidejű mozgalom eredményeként. Az Egyesült Államokbeli szuperszámítógépek elszigetelten működtek, ami nagy regionális különbségeket eredményezett a szuperszámítógépek terhelésében. Egy szuperszámítógép-központ túl lehetett terhelve, így a felhasználói feladatok munkasorokban várakoztak, miközben más központok ugyanabban az időben kihasználatlanok (idle) maradtak, mivel nem kaptak elég feladatot a rendszer megfelelő terhelésének fenntartásához. A kutatók azt javasolták, hogy ezen központok egy nagyobb rendszerbe való összekapcsolásával, amely automatikusan a legmegfelelőbb központba küldi a feladatokat, növelni lehet a szuperszámítógép-központok általános hatékonyságát és kihasználtságát, valamint csökkenteni lehet a felhasználók várakozási idejét. Körülbelül ugyanebben az időben a hálózati és az elosztott számítási rendszerek elértek egy olyan érettségi szintet, amely lehetővé tette nagy számítási klaszterek létrehozását helyi hálózaton keresztül összekapcsolt számítógépekből. A kutatók azt javasolták, hogy ezt a koncepciót terjesszék ki nagy kiterjedésű hálózatokra, azaz távoli számítógépeket kapcsoljanak össze nagy virtuális párhuzamos számítógépek létrehozásához. Az első törekvés szuperszámítógépek összekapcsolását javasolta, míg a második ugyanezt tervezte számítógépklaszterekkel. Mindkettő célja a meglévő számítási erőforrások hatékonyságának és kihasználtságának növelése volt egy hatékony terheléselosztó szoftverréteg biztosításával.
 
@@ -530,17 +530,17 @@ A projekt sikere egy új alprojektet eredményezett, a futtató infrastruktúra 
 
 Egy hasonló projekt, amely a BOINC projekt ernyőjén kívül fut, a Folding@home, amely fehérje-szerkezet kutatási platform. Az írás idején a projekt fő fókusza olyan molekulák megtalálása, amelyek a COVID-19 vírus elleni potenciális gyógyszerekként használhatók.
 
-### 2.6 Hosting és a kialakuló közműszerű számítástechnika (utility computing)
+### 2.6 Hoszting és a kialakuló közműszerű számítástechnika
 
-Az 1990-es évek végére, a 2000-es évek elejére a számítógépek nélkülözhetetlenné váltak a vállalatok napi működésében. Egyre több számítógépet telepítettek a vállalatoknál, és nyilvánvalóvá vált, hogy ezek a rendszerek professzionális támogatást és karbantartást igényelnek. Kezdetben a vállalatok IT-szakembereket kezdtek alkalmazni erre a feladatra, de ez valódi problémát jelentett kis- és középvállalkozások számára, amelyek elsődleges tevékenysége nem az IT. A kereskedelmi, gyártási stb. területen működő kis cégek számára nem volt életképes és hatékony teljes munkaidős IT személyzetet fizetni a cég weboldalának vagy belső számítógépeinek felügyeletére. Néhány éven belül új iparág jött létre, az outsourced web hosting. Gazdaságosabb volt egy nagysebességű összeköttetésekkel rendelkező szerverfarmot egy helyszínen üzemeltetni, és több kisvállalat weboldalát hostolni. A méretgazdaságosság alacsonyabb árakat eredményezett, a vállalatok elfelejthették a weboldal üzemeltetésének részleteit, és elsődleges szerepükre összpontosíthattak. A web hostingot hamar követte az általános hosting, ahol teljes számítógépeket menedzseltek és üzemeltettek egy ügyfél számára, tetszőleges
+Az 1990-es évek végére, a 2000-es évek elejére a számítógépek nélkülözhetetlenné váltak a vállalatok napi működésében. Egyre több számítógépet telepítettek a vállalatoknál, és nyilvánvalóvá vált, hogy ezek a rendszerek professzionális támogatást és karbantartást igényelnek. Kezdetben a vállalatok IT-szakembereket kezdtek alkalmazni erre a feladatra, de ez valódi problémát jelentett a kis- és középvállalkozások számára, amelyek elsődleges tevékenysége nem az informatika. A kereskedelmi, gyártási stb. területen működő kis cégek számára nem volt életképes és hatékony teljes munkaidős IT-személyzetet fizetni a cég weboldalának vagy belső számítógépeinek felügyeletére. Néhány éven belül új iparág jött létre, a kiszervezett webhoszting. Gazdaságosabb volt egy nagysebességű összeköttetésekkel rendelkező szerverfarmot egy helyszínen üzemeltetni, és több kisvállalat weboldalát ott futtatni. A méretgazdaságosság alacsonyabb árakat eredményezett, a vállalatok elfelejthették a weboldal üzemeltetésének részleteit, és elsődleges szerepükre összpontosíthattak. A webhosztingot hamar követte az általános hoszting, ahol teljes számítógépeket menedzseltek és üzemeltettek egy ügyfél számára, tetszőleges
 
 ---
 
 ⁹ https://boinc.berkeley.edu/
 
-alkalmazásokat futtatva. A vállalatok szerették ezt a megközelítést, mivel fix havi díjat tudtak fizetni a szolgáltatásokért, amelyeket könnyen lehetett tervezni az éves költségvetésben. Ez volt a kezdete annak, amit ma „utility computing"-nak nevezünk.
+alkalmazásokat futtatva. A vállalatok szerették ezt a megközelítést, mivel fix havi díjat tudtak fizetni a szolgáltatásokért, amelyeket könnyen lehetett tervezni az éves költségvetésben. Ez volt a kezdete annak, amit ma közműszerű számítástechnikának nevezünk.
 
-A SUN Microsystems volt az első jelentős IT-vállalat, amely üzleti potenciált látott az ilyen típusú számítástechnikában. Tökéletesen illeszkedve mottójukhoz, „The Network Is The Computer", létrehozták a Sun Containert, egy hordozható szerver-konténert (lásd 2-19. ábra), amelyet eredetileg nagy ügyfelekhez terveztek, akiknek extra számítási teljesítményre volt szükségük. 2005-ben a SUN elkezdte saját maga üzemeltetni ezeket a rendszereket, és fix használat utáni fizetés (pay-per-use) díjon kínált hozzáférést az erőforrásokhoz. A Sun Grid compute utility esetén az ár 1$ volt CPU-óránként; a Sun Grid storage utility esetén az ár 1$ volt gigabyte-onként havonta. A rendszer valódi siker volt, de a szerencsétlen 2008-as pénzügyi válság csődbe juttatta a SUN-t és befejezte létezésüket.
+A SUN Microsystems volt az első jelentős IT-vállalat, amely üzleti potenciált látott az ilyen típusú számítástechnikában. Tökéletesen illeszkedve mottójukhoz, „The Network Is The Computer”, létrehozták a Sun Containert, egy hordozható szerverkonténert (lásd 2-19. ábra), amelyet eredetileg olyan nagy ügyfelek számára terveztek, akiknek extra számítási teljesítményre volt szükségük. 2005-ben a SUN elkezdte saját maga üzemeltetni ezeket a rendszereket, és rögzített használatalapú díjon kínált hozzáférést az erőforrásokhoz. A Sun Grid Compute Utility esetén az ár 1 dollár volt CPU-óránként; a Sun Grid Storage Utility esetén az ár 1 dollár volt gigabájtonként havonta. A rendszer valódi siker volt, de a szerencsétlen 2008-as pénzügyi válság csődbe juttatta a SUN-t, és ezzel véget vetett a vállalat önálló működésének.
 
 *2-19. ábra: A SUN Grid konténer*
 
@@ -562,15 +562,15 @@ nélkül. A virtualizációs réteg utasításkészlet-architektúrát és hardv
 
 ![2-20. ábra](<../Cloud Programming_MSc_Juhasz_IId-28_1.png>)
 
-*Teljes virtualizáció* (Full Virtualization) esetén a tényleges hardver teljes szimulációja történik, hogy egy módosítatlan vendég OS futtatható legyen.
+*Teljes virtualizáció* (*Full Virtualization*) esetén a tényleges hardver teljes szimulációja történik, hogy egy módosítatlan vendég operációs rendszer futtatható legyen.
 
-A *paravirtualizáció* érdekes megközelítést jelent a hardver-virtualizációhoz. Ebben a virtualizációtípusban a virtualizációs réteg egy speciális API-t kínál az operációs rendszernek, amely lehetővé teszi, hogy az operációs rendszer egyes funkciói a host hardveren hajtódjanak végre az emulált réteg helyett. Ez növeli a teljesítményt és a végrehajtási hatékonyságot. Sajnos ez módosítást igényel az operációs rendszer kódjában. Néhány operációs rendszernek van paravirtualizált disztribúciója.
+A *paravirtualizáció* érdekes megközelítést jelent a hardvervirtualizációhoz. Ebben a virtualizációtípusban a virtualizációs réteg egy speciális API-t kínál az operációs rendszernek, amely lehetővé teszi, hogy az operációs rendszer egyes funkciói a gazdagép hardverén hajtódjanak végre az emulált réteg helyett. Ez növeli a teljesítményt és a végrehajtási hatékonyságot. Sajnos ez módosítást igényel az operációs rendszer kódjában. Néhány operációs rendszernek van paravirtualizált változata.
 
 *2-21. ábra: Az erőforrás-virtualizáció különböző formái¹⁰*
 
 ![2-21. ábra](<../Cloud Programming_MSc_Juhasz_IId-28_2.png>)
 
-A teljes és paravirtualizációs módszerek szoftver-alapú megközelítések. Az utasításokat binárisan lefordítják a vendég verziójáról a host verziójára, ami a fordításnak súlyos teljesítményveszteséget okoz. A hardver-virtualizáció legelterjedtebb stratégiája ma a *hardver-támogatott virtualizáció* (hardware-assisted virtualisation), amely a CPU-gyártók speciális hardvertámogatására támaszkodik. Ebben a módban az operációs rendszer vagy alkalmazás számos funkciója felhasználhatja a host számítógép (főleg a
+A teljes és paravirtualizációs módszerek szoftveralapú megközelítések. Az utasításokat binárisan lefordítják a vendégváltozatról a gazdagépen futó változatra, ami jelentős teljesítményveszteséget okoz. A hardvervirtualizáció legelterjedtebb stratégiája ma a *hardveresen támogatott virtualizáció* (*hardware-assisted virtualisation*), amely a CPU-gyártók speciális hardvertámogatására támaszkodik. Ebben a módban az operációs rendszer vagy alkalmazás számos funkciója felhasználhatja a gazdagép számítógép (főleg a
 
 ---
 
@@ -593,9 +593,9 @@ Vannak hátrányai is a virtualizációnak, amelyeket érdemes megemlíteni.
 
 ## 3. Felhőtechnológiai alapok
 
-A felhőtechnológia a modern, mindennapi életünk szerves része. Laikus megfogalmazásban egy olyan hatalmas, virtuális és skálázható számítási és tárolási infrastruktúraként definiálhatjuk, amelyet felhőszolgáltatók (cloud providers) üzemeltetnek, és amelyet vállalatok vagy magánszemélyek igény szerint (on-demand) vehetnek igénybe különféle célokra. A felhő legfőbb előnye, hogy mentesíti az IT-felhasználókat a hardver- és szoftverkomponensek üzemeltetésének és adminisztrációjának terhe alól. Legfigyelemreméltóbb jellemzője pedig az egyszerű használhatóság és az igény szerinti skálázhatóság. Erre az utóbbi tulajdonságra a későbbiekben még részletesebben is kitérünk.
+A felhőtechnológia a modern, mindennapi életünk szerves része. Laikus megfogalmazásban egy olyan hatalmas, virtuális és skálázható számítási és tárolási infrastruktúraként definiálhatjuk, amelyet felhőszolgáltatók üzemeltetnek, és amelyet vállalatok vagy magánszemélyek igény szerint vehetnek igénybe különféle célokra. A felhő legfőbb előnye, hogy mentesíti az IT-felhasználókat a hardver- és szoftverkomponensek üzemeltetésének és adminisztrációjának terhe alól. Legfigyelemreméltóbb jellemzője pedig az egyszerű használhatóság és az igény szerinti skálázhatóság. Erre az utóbbi tulajdonságra a későbbiekben még részletesebben is kitérünk.
 
-Egy modern, a mindennapi működésében számítógépekre támaszkodó vállalat IT-infrastruktúrájának üzemeltetése során két, egymással ellentétes cél fogalmazódik meg. Az első cél az infrastruktúra méretének minimalizálása, a kezdeti és a működési költségek alacsonyan tartása érdekében. A második cél pedig az, hogy mindig elegendő erőforrás álljon rendelkezésre a jövedelmező működéshez szükséges feladatok elvégzéséhez. Ha az üzletmenetet állandó és egyenletes számítási igény jellemzi (például fix számú alkalmazás 24/7-es futtatása), a szükséges kapacitás könnyen tervezhető. Ingadozó terhelés esetén azonban a helyzet jóval bonyolultabb. A legproblémásabb esetet a kiszámíthatatlan, hirtelen megugró, lökésszerű (burst) terhelések jelentik.
+Egy modern, a mindennapi működésében számítógépekre támaszkodó vállalat IT-infrastruktúrájának üzemeltetése során két, egymással ellentétes cél fogalmazódik meg. Az első cél az infrastruktúra méretének minimalizálása, a kezdeti és a működési költségek alacsonyan tartása érdekében. A második cél pedig az, hogy mindig elegendő erőforrás álljon rendelkezésre a jövedelmező működéshez szükséges feladatok elvégzéséhez. Ha az üzletmenetet állandó és egyenletes számítási igény jellemzi (például fix számú alkalmazás 24/7-es futtatása), a szükséges kapacitás könnyen tervezhető. Ingadozó terhelés esetén azonban a helyzet jóval bonyolultabb. A legproblémásabb esetet a kiszámíthatatlan, hirtelen megugró, lökésszerű terhelések jelentik.
 
 Mivel a vállalatoknak szélsőséges terhelés mellett is működőképesnek kell maradniuk, a technológiai vezetők általában túlméretezik a rendszereiket; vagyis a maximálisan elképzelhető rendszerterhelésre terveznek. Ingadozó vagy lökésszerű használat esetén ez a stratégia az esetek többségében a rendszer alulkihasználtságát (underutilization) eredményezi (lásd 3-1. ábra). Az alulkihasználtság pedig egyet jelent az erőforrások és a működési költségek elpazarlásával. Sokkal gazdaságosabb lenne az átlagos rendszerterhelés szintjére tervezni, ez azonban az infrastruktúrát és magát a vállalatot is sebezhetővé tenné, hiszen a legkritikusabb esetekben – azaz a csúcsidőszakokban – a rendszer képtelen lenne kiszolgálni az igényeket.
 
@@ -619,7 +619,7 @@ Ha szükséges, ezek az alacsony szintű erőforrások (szerverek, tárolók és
 
 
 
-Azonban nem minden ügyfélnek van szüksége ilyen szintű rugalmasságra. Sokaknak csupán egy beépített funkcionalitásokkal rendelkező weboldalra van szükségük (pl. webáruházak, közműszolgáltatók portáljai stb.). Ezek az alkalmazások szabványos szoftverkeretrendszerekre épülnek, és az üzemeltetésük nagymértékben leegyszerűsíthető, ha a felhőszolgáltató biztosítja és kezeli a futásidejű környezetet (runtime environment). Ilyen lehet például egy ASP.Net, Spring vagy Node.js webalkalmazás, a hozzá tartozó backend adatbázissal együtt. Ebben az esetben a szolgáltató egy kész platformot biztosít és üzemeltet a felhasználó számára. Ezt **Platform mint Szolgáltatásnak (Platform-as-a-Service – PaaS)** hívjuk. A felhasználónak csupán a saját alkalmazáskódját kell biztosítania, amelyet erre a platformra telepít.
+Azonban nem minden ügyfélnek van szüksége ilyen szintű rugalmasságra. Sokaknak csupán egy beépített funkcionalitásokkal rendelkező weboldalra van szükségük (pl. webáruházak, közműszolgáltatók portáljai stb.). Ezek az alkalmazások szabványos szoftverkeretrendszerekre épülnek, és az üzemeltetésük nagymértékben leegyszerűsíthető, ha a felhőszolgáltató biztosítja és kezeli a futtatókörnyezetet. Ilyen lehet például egy ASP.Net, Spring vagy Node.js webalkalmazás, a hozzá tartozó háttér-adatbázissal együtt. Ebben az esetben a szolgáltató egy kész platformot biztosít és üzemeltet a felhasználó számára. Ezt **Platform mint Szolgáltatásnak (Platform-as-a-Service – PaaS)** hívjuk. A felhasználónak csupán a saját alkalmazáskódját kell biztosítania, amelyet erre a platformra telepít.
 
 Még magasabb absztrakciós szinten komplett szoftverrendszerek is elérhetővé tehetők a felhőben. Ennek legkézenfekvőbb példája egy felhőalapú e-mail szolgáltatás. A felhasználókat egyáltalán nem érdeklik a szolgáltatás működési vagy technikai részletei, nem érdekli őket, hol vannak a szerverek, vagy hogyan frissítik a szoftvert; ők csak elektronikus leveleket akarnak küldeni és fogadni. A **Szoftver mint Szolgáltatás (Software-as-a-Service – SaaS)** gyönyörű példája annak, hogyan lehet egy hasznos funkcionalitást szolgáltatásként absztrahálni és milliók számára elérhetővé tenni.
 
@@ -661,7 +661,7 @@ A felhő legfőbb vonzereje a költséghatékonyság, a kimagasló teljesítmén
 
 A központosított tervezés lehetővé teszi a szolgáltatók számára, hogy adatközpontjaikat rendkívül hatékonyan működtessék. Azt az üzemeltetési hatékonyságot és biztonsági szintet, amit ezek a szolgáltatók nyújtanak, egy hagyományos vállalati IT-infrastruktúrában szinte lehetetlen lenne elérni.
 
-Természetesen a felhőszolgáltató felelőssége nem merül ki egy-egy IaaS, PaaS vagy SaaS szolgáltatáspéldány elindításában. Egy szolgáltatónak számtalan egyéb működési tényezőre is figyelnie kell. Ahogy a 3-9. ábra mutatja, ezek egy része a belső menedzsmenthez és a jogszabályi megfelelőséghez (compliance és audit) kapcsolódik, míg mások a magasabb szintű szolgáltatások közvetítését (service brokering) teszik lehetővé.
+Természetesen a felhőszolgáltató felelőssége nem merül ki egy-egy IaaS-, PaaS- vagy SaaS-szolgáltatáspéldány elindításában. Egy szolgáltatónak számtalan egyéb működési tényezőre is figyelnie kell. Ahogy a 3-9. ábra mutatja, ezek egy része a belső menedzsmenthez és a jogszabályi megfelelőséghez kapcsolódik, míg mások a magasabb szintű szolgáltatások közvetítését teszik lehetővé.
 
 ![3-9. ábra](<../Cloud Programming_MSc_Juhasz_IId-34_2.png>)
 
@@ -731,7 +731,7 @@ Két viszonylag későn érkezett szereplő a felhőpiacon az IBM és az Oracle.
 
 ### 3.5 Árképzés
 
-Emlékszünk még a közműszerű számítástechnika (utility computing) modelljére és a SUN Microsystems konténerére, amely egységes, 1 dollár/CPU-óra árazást alkalmazott? Ezt az árazási sémát **fix áras (on-demand)** vagy **használatalapú (pay-as-you-go)** árazásnak nevezzük. Az Amazon ezt az egyszerű, óradíjas sémát vezette be szolgáltatásaihoz 2006-ban. Az óránkénti díjszámítás azt jelentette, hogy még ha a felhasználó csak 5 percig is használta az erőforrást, a teljes órás díjat ki kellett fizetnie. Néhány évvel később a szolgáltatók finomítottak ezen a modellen: a legkisebb számlázási egységet először 5 percre, majd 1 percre, végül pedig másodpercre csökkentették. A perc- és másodperc-alapú számlázás különösen vonzóvá vált a rövid, de intenzív, lökésszerű (burst) számítási terhelések esetén. Ez az on-demand séma nagyon kedvező a vállalatok számára, mivel rendkívül egyszerűvé teszi az erőforrás-használat tervezését, költségvetését és könyvelését.
+Emlékszünk még a közműszerű számítástechnika modelljére és a SUN Microsystems konténerére, amely egységes, 1 dollár/CPU-óra árazást alkalmazott? Ezt az árazási sémát **fix áras (igény szerinti)** vagy **használatalapú** árazásnak nevezzük. Az Amazon ezt az egyszerű, óradíjas sémát vezette be szolgáltatásaihoz 2006-ban. Az óránkénti díjszámítás azt jelentette, hogy még ha a felhasználó csak 5 percig is használta az erőforrást, a teljes órás díjat ki kellett fizetnie. Néhány évvel később a szolgáltatók finomítottak ezen a modellen: a legkisebb számlázási egységet először 5 percre, majd 1 percre, végül pedig másodpercre csökkentették. A perc- és másodperc-alapú számlázás különösen vonzóvá vált a rövid, de intenzív, lökésszerű számítási terhelések esetén. Ez az igény szerinti séma nagyon kedvező a vállalatok számára, mivel rendkívül egyszerűvé teszi az erőforrás-használat tervezését, költségvetését és könyvelését.
 
 Az árazási stratégiák további fejlődése a kedvezményes és a dinamikus árazás megjelenéséhez vezetett. A **foglalásos árazás (reserved pricing)** megköveteli, hogy a felhasználó előre lekösse egy bizonyos mennyiségű erőforrás használatát (jellemzően 1 vagy 3 évre), cserébe aztán jóval alacsonyabb, kedvezményes áron veheti azt igénybe. Koncepcionálisan ez nagyon hasonlít a Grid rendszerek erőforrás-bróker mechanizmusaihoz.
 
@@ -749,7 +749,7 @@ Ennek az ellentétnek jelenleg az a kompromisszumos feloldása, hogy a nagyobb f
 
 ---
 
-## 4. Amazon AWS
+## 4. Amazon Web Services (AWS)
 Az Amazon Web Services (AWS) a világ legnagyobb és piacvezető felhőszolgáltató rendszere. A szolgáltatások rendkívül széles választékát kínálja a felhasználók számára, a dedikált komponensszolgáltatásoktól kezdve a teljes alkalmazásokig, mindezt a legmagasabb szintű rendelkezésre állás (high availability) mellett. Az AWS által kínált szolgáltatáskategóriák teljes listája a hivatalos weboldalán található [13] (ennek egy pillanatképe a 4-1. ábrán látható). Minden egyes kategória számos további, specializált szolgáltatást foglal magában.
 
 ![4-1. ábra](<../Cloud Programming_MSc_Juhasz_IId-40_1.png>)
@@ -863,7 +863,7 @@ Bár az előzőekben bemutatott IaaS infrastrukturális szolgáltatások maximá
 A Platform mint Szolgáltatás (PaaS) réteget pontosan ennek a problémának a kiküszöbölésére hozták létre. Itt a mélyebb, infrastrukturális részletek (operációs rendszer foltozása, webszerver-konfiguráció stb.) el vannak rejtve a fejlesztő elől, aki így kizárólag az alkalmazás kódjára koncentrálhat. Az Amazon univerzális PaaS megoldása a felhőalkalmazások futtatására az AWS Elastic Beanstalk.
 
 #### 4.2.1 AWS Elastic Beanstalk
-Az AWS Elastic Beanstalk egy rendkívül könnyen használható szolgáltatás webalkalmazások gyors telepítésére (deployment) és automatikus skálázására. A platform natívan támogatja a Java, .NET, PHP, Node.js, Python, Ruby, Go és a Docker környezetben fejlesztett alkalmazásokat. Amikor egy fejlesztő feltölt egy alkalmazást (például egy Java .war fájlt) az Elastic Beanstalkba, a rendszer automatikusan felépíti a megfelelő futásidejű környezetet, és lefoglalja (provision) a futtatáshoz szükséges AWS erőforrásokat, például az EC2 példányokat. Az Elastic Beanstalk transzparens módon, a háttérben kezeli a kapacitáselosztás, a terheléselosztás (load balancing), az automatikus skálázás (auto-scaling) és az alkalmazás-állapot monitorozásának (health monitoring) minden apró részletét.
+Az AWS Elastic Beanstalk egy rendkívül könnyen használható szolgáltatás webalkalmazások gyors üzembe helyezésére és automatikus skálázására. A platform natívan támogatja a Java, .NET, PHP, Node.js, Python, Ruby, Go és a Docker környezetben fejlesztett alkalmazásokat. Amikor egy fejlesztő feltölt egy alkalmazást (például egy Java `.war` fájlt) az Elastic Beanstalkba, a rendszer automatikusan felépíti a megfelelő futtatókörnyezetet, és lefoglalja a futtatáshoz szükséges AWS-erőforrásokat, például az EC2-példányokat. Az Elastic Beanstalk transzparens módon, a háttérben kezeli a kapacitáselosztás, a terheléselosztás, az automatikus skálázás és az alkalmazásállapot figyelésének minden apró részletét.
 
 Az alkalmazás elindítását követően a felhasználó könnyedén felügyelheti a működést egy átlátható műszerfalon (dashboard). A telepítési és indítási munkafolyamatot a 4-5. ábra szemlélteti (Java alkalmazás esetén például a futtatási környezet egy Apache Tomcat webszerver, amely beépítve támogatja a Java Servleteket).
 
@@ -987,7 +987,7 @@ A zónák egyedülálló meghibásodási tartományt (fault domain) képviselnek
 
 ![5-2. ábra](<../Cloud Programming_MSc_Juhasz_IId-50_1.png>)
 
-*5-2. ábra: A Global, Regional és Zonal erőforrás-koncepció szemléltetése*
+*5-2. ábra: A globális, regionális és zónaszintű erőforrás-koncepció szemléltetése*
 
 A GCP ma már több mint 100 terméket foglal magában; ezek egy reprezentatív részhalmazát az 5-3. ábra mutatja be.
 
@@ -1033,7 +1033,7 @@ A GCP hálózati szolgáltatásai lefedik azt a funkcionalitást, amelyet a kor�
 ### 5.2 PaaS-rétegbeli szolgáltatások
 A robusztus felhőalkalmazások gyors telepítése és futtatása érdekében – megkímélve a fejlesztőket a hálózat- és szervermenedzsment komplexitásától – a Google is kínál Platform mint Szolgáltatás (PaaS) megoldást, ez pedig a Google App Engine. Az App Engine szinte a teljes erőforrás-kezelést átvállalja a háttérben: gondoskodik az automatikus skálázásról, a biztonsági operációsrendszer-frissítésekről, a terheléselosztásról és a részletes alkalmazásmonitorozásról.
 
-Az App Engine natívan támogatja a Java, Node.js, Python, Go, .NET, PHP és Ruby nyelveken fejlesztett alkalmazások futtatását. Amennyiben egy projekt ettől eltérő technológiát használ, úgynevezett egyedi futásidejű környezetek (custom runtimes, például Docker-konténerek) alkalmazására is lehetőség van. Az App Engine alkalmazások zökkenőmentesen integrálódnak a GCP egyéb tárolási megoldásaival, mint a Cloud Storage, a Cloud SQL, a Firestore, de képesek külső, harmadik fél által üzemeltetett adatbázisokhoz is csatlakozni.
+Az App Engine natívan támogatja a Java, Node.js, Python, Go, .NET, PHP és Ruby nyelveken fejlesztett alkalmazások futtatását. Amennyiben egy projekt ettől eltérő technológiát használ, úgynevezett egyedi futásidejű környezetek (például Docker-konténerek) alkalmazására is lehetőség van. Az App Engine alkalmazások zökkenőmentesen integrálódnak a GCP egyéb tárolási megoldásaival, mint a Cloud Storage, a Cloud SQL, a Firestore, de képesek külső, harmadik fél által üzemeltetett adatbázisokhoz is csatlakozni.
 
 ### 5.3 SaaS-rétegbeli szolgáltatások
 A Google világszerte ismert a felhasználók milliárdjai számára elérhető innovatív szolgáltatásairól. A Gmail, a Google Naptár, a Google Dokumentumok és a Google Térkép maguk is kiváló példái a Szoftver mint Szolgáltatás (SaaS) modellnek. Emellett a Google Cloud Platform számos API-n keresztül elérhető „okoskomponenst” is kínál, amelyeket a fejlesztők építőkockaként építhetnek be saját alkalmazásaikba. Ezek közé tartoznak a gépi látást (Vision), a videóelemzést, a természetes nyelvfeldolgozást, a gépi fordítást és a komplex adatanalitikát biztosító modulok. Ezek közül a könyv későbbi fejezeteiben többet is részletesen megvizsgálunk és használunk majd.
@@ -1154,9 +1154,9 @@ try {
 ```
 
 ### 6.4 A Cloud Storage programozott használata
-A Google Cloud Platform használatát bemutató fejezetet két olyan kódrészlettel zárjuk, amelyek a Google Cloud Storage objektumtároló API szintű vezérlését szemléltetik. Az első példa egy új tárolóvödör (bucket) létrehozását, míg a második az elérhető vödrök listázását mutatja be.
+A Google Cloud Platform használatát bemutató fejezetet két olyan kódrészlettel zárjuk, amelyek a Google Cloud Storage objektumtároló API-szintű vezérlését szemléltetik. Az első példa egy új tárolóvödör létrehozását, míg a második az elérhető tárolóvödrök listázását mutatja be.
 
-Új tárolóvödör (Bucket) létrehozása
+Új tárolóvödör létrehozása
 
 ```java
 import com.google.cloud.storage.Bucket;
@@ -1202,7 +1202,7 @@ public class CreateBucketWithStorageClassAndLocation {
 }
 ```
 
-Létező vödrök listázása
+Létező tárolóvödrök listázása
 
 ```java
 import com.google.api.gax.paging.Page;
@@ -1848,24 +1848,24 @@ A Cloud Dataflow tökéletes integrációt kínál a GCP többi adatszolgáltat�
 
 ![8-15. ábra](<../Cloud Programming_MSc_Juhasz_IId-90_1.png>)
 
-*8-15. ábra: Néhány szemléltető streaming keretrendszer összehasonlítása*
+*8-15. ábra: Néhány szemléltető adatfolyam-feldolgozó keretrendszer összehasonlítása*
 
 
 
 ---
 
-## 9. Cloud Functions
-A Cloud Functions a felhőalapú végrehajtási technológiák legújabb generációját képviseli. A függvények (functionök) legfőbb jellemzője, hogy lehetővé teszik a felhasználók számára a kód közvetlen beküldését a felhőbe, anélkül, hogy bármilyen futásidejű infrastruktúrát (runtime infrastructure) ki kellene építeniük. Ebből kifolyólag a függvényeket szerver nélküli (serverless) kódvégrehajtásnak is nevezik, a felhőszolgáltatók pedig egy új szolgáltatástípusként, Függvény mint Szolgáltatásként (Function-as-a-Service – FaaS) hivatkoznak rájuk.
+## 9. Felhőfüggvények (Cloud Functions)
+A Cloud Functions a felhőalapú végrehajtási technológiák legújabb generációját képviseli. A függvények legfőbb jellemzője, hogy lehetővé teszik a felhasználók számára a kód közvetlen beküldését a felhőbe, anélkül, hogy bármilyen futtatási infrastruktúrát ki kellene építeniük. Ebből kifolyólag a függvényeket szerver nélküli kódvégrehajtásnak is nevezik, a felhőszolgáltatók pedig egy új szolgáltatástípusként, Függvény mint Szolgáltatásként (*Function-as-a-Service* – FaaS) hivatkoznak rájuk.
 
-A függvények futtatása során a felhasználónak nem kell a szerverüzemeltetési feladatokkal (erőforrás-kiosztás, menedzsment vagy szoftverfrissítés) foglalkoznia; ezt a felelősséget a felhőszolgáltató teljes mértékben átvállalja. A függvények a terhelés függvényében automatikusan skálázódnak, és beépített monitorozási, naplózási, valamint hibakeresési (debugging) képességekkel rendelkeznek. Támogatják a szerepkörökhöz kötött (role-based) és az egyedi függvényszintű biztonsági beállításokat, továbbá olyan hálózati funkciókat is kínálnak, amelyekkel a függvényből transzparens módon elérhetők más felhőkomponensek is.
+A függvények futtatása során a felhasználónak nem kell a szerverüzemeltetési feladatokkal (erőforrás-kiosztás, menedzsment vagy szoftverfrissítés) foglalkoznia; ezt a felelősséget a felhőszolgáltató teljes mértékben átvállalja. A függvények a terhelés függvényében automatikusan skálázódnak, és beépített monitorozási, naplózási, valamint hibakeresési képességekkel rendelkeznek. Támogatják a szerepköralapú és az egyedi függvényszintű biztonsági beállításokat, továbbá olyan hálózati funkciókat is kínálnak, amelyekkel a függvényből transzparens módon elérhetők más felhőkomponensek is.
 
-A Cloud Functions a modern felhőtechnológia egyik legizgalmasabb vívmánya. Egységes formában valósítja meg a korábbi számítástechnikai rendszerek egykor utópisztikusnak tűnő vízióit: a zökkenőmentes programvégrehajtást földrajzilag elosztott erőforrásokon (lásd Grid computing), publikus és privát szolgáltatások halmazának integrált felhasználásával (lásd szolgáltatásorientált architektúrák – SOA).
+A Cloud Functions a modern felhőtechnológia egyik legizgalmasabb vívmánya. Egységes formában valósítja meg a korábbi számítástechnikai rendszerek egykor utópisztikusnak tűnő vízióit: a zökkenőmentes programvégrehajtást földrajzilag elosztott erőforrásokon (lásd grid számítástechnika), publikus és privát szolgáltatások halmazának integrált felhasználásával (lásd szolgáltatásorientált architektúrák – SOA).
 
-Ebben a fejezetben kizárólag a Google Cloud Functions [27] szolgáltatásra fókuszálunk. Hasonló megoldások minden nagy felhőszolgáltató kínálatában megtalálhatók, ilyen például az AWS Lambda [28] is. A fejezet hátralévő részében a „függvény” (function) kifejezés alatt a Google megoldását értjük.
+Ebben a fejezetben kizárólag a Google Cloud Functions [27] szolgáltatásra összpontosítunk. Hasonló megoldások minden nagy felhőszolgáltató kínálatában megtalálhatók, ilyen például az AWS Lambda [28] is. A fejezet hátralévő részében a „függvény” kifejezés alatt a Google megoldását értjük.
 
-A GCP-ben kétféle függvénytípust fejleszthetünk: HTTP-függvényeket (HTTP Functions) és Háttérfüggvényeket (Background Functions). A HTTP-függvények Node.js, Python, Go, Java vagy C# nyelveken, míg a Háttérfüggvények Node.js, Python, Go vagy Java nyelveken írhatók. A Cloud Functions környezet a választott implementációs nyelv alapján automatikusan kiválasztja a megfelelő futásidejű (runtime) környezetet.
+A GCP-ben kétféle függvénytípust fejleszthetünk: HTTP-függvényeket és háttérfüggvényeket. A HTTP-függvények Node.js, Python, Go, Java vagy C# nyelveken, míg a háttérfüggvények Node.js, Python, Go vagy Java nyelveken írhatók. A Cloud Functions környezet a választott implementációs nyelv alapján automatikusan kiválasztja a megfelelő futtatókörnyezetet.
 
-HTTP-függvény (HTTP Function)
+HTTP-függvény
 
 A HTTP-függvényeket úgy tervezték, hogy szabványos HTTP-kéréseken (GET, PUT, POST, DELETE és OPTIONS) keresztül lehessen őket meghívni. A kérést indító kliens addig várakozik, amíg a feldolgozás be nem fejeződik és a válasz meg nem érkezik. Java nyelvű implementáció esetén az egyedi függvénynek meg kell valósítania a com.google.cloud.functions.HttpFunction interfészt, amely egy funkcionális interfész, egyetlen service() metódussal.
 
@@ -1927,9 +1927,9 @@ exports.helloHttp = (req, res) => {
 };
 ```
 
-Háttérfüggvény (Background Function)
+Háttérfüggvény
 
-A függvények másik típusa a háttérfüggvény, amelyet a felhőinfrastruktúrából származó események (eventek) aszinkron kezelésére terveztek. Ilyen esemény lehet például egy Cloud Storage tárolóvödör (bucket) tartalmának megváltozása, vagy egy üzenet beérkezése egy Cloud Pub/Sub témakörbe (topic). A Java nyelvű háttérfüggvényeknek a com.google.cloud.functions.BackgroundFunction interfészt kell implementálniuk. A service() metódus helyett ez az interfész egyetlen accept() metódussal rendelkezik, amely a figyelt esemény bekövetkeztekor automatikusan meghívódik.
+A függvények másik típusa a háttérfüggvény, amelyet a felhőinfrastruktúrából származó események aszinkron kezelésére terveztek. Ilyen esemény lehet például egy Cloud Storage tárolóvödör tartalmának megváltozása, vagy egy üzenet beérkezése egy Cloud Pub/Sub témakörbe. A Java nyelvű háttérfüggvényeknek a `com.google.cloud.functions.BackgroundFunction` interfészt kell implementálniuk. A `service()` metódus helyett ez az interfész egyetlen `accept()` metódussal rendelkezik, amely a figyelt esemény bekövetkeztekor automatikusan meghívódik.
 
 A következő példában egy olyan háttérfüggvényt mutatunk be, amely akkor aktiválódik, ha bármilyen változás történik egy Cloud Storage vödörben. Figyeljük meg az interfész generikus típusparaméterét, amely meghatározza, hogy milyen típusú események esetén hívódjon meg ez az implementáció. A függvény kinyeri a tárolóvödörre és a fájlra vonatkozó információkat, valamint a bekövetkezett esemény típusát.
 
@@ -1960,15 +1960,15 @@ https://cloud.google.com/functions/docs/writing/background
 
 A függvények létrehozásának és futtatásának általános lépései a következők:
 
-A függvény megírása (Write)
+A függvény megírása
 
-A függvény telepítése (Deploy)
+A függvény telepítése
 
-A függvény végrehajtása/meghívása (Execute/Call)
+A függvény végrehajtása vagy meghívása
 
-A függvény monitorozása (Monitor)
+A függvény monitorozása
 
-Függvények végrehajtása (Function Execution)
+Függvények végrehajtása
 
 A GCP-függvények mindig izolált, biztonságos futásidejű kontextusban hajtódnak végre. A függvényekkel kapcsolatos egyik legfontosabb megkötés, hogy állapotmentesnek (stateless) kell lenniük. Ha a helyes működéshez állapot (state) fenntartása szükséges, azt valamilyen külső szolgáltatásba – például Google Cloud Storage-ba vagy Datastore-ba – kell menteni (perzisztálni). Minden egyes függvénypéldány egyetlen klienst/kérést szolgál ki egyszerre; ha nagyobb terhelés jelentkezik, a rendszer szükség szerint párhuzamosan több példányt indít el.
 
@@ -1976,18 +1976,18 @@ A GCP a következő végrehajtási garanciákat nyújtja a függvények számár
 
 A felhőfüggvényeket különböző eseményindítók (triggerek) aktiválják. A triggerek típusai a következők lehetnek: HTTP triggerek, Cloud Pub/Sub triggerek, Cloud Storage triggerek, közvetlen (Direct) triggerek, Cloud Firestore triggerek, Analytics for Firebase triggerek, Firebase Realtime Database triggerek és Firebase Authentication triggerek. A Cloud Pub/Sub mechanizmust a következő fejezetben fogjuk részletesen megvizsgálni, hogy jobban megértsük az általános esemény- és üzenetkézbesítési megoldások működését.
 
-Függvények telepítése (Deploying functions)
+Függvények telepítése
 
-Mielőtt egy függvény végrehajthatóvá válna, telepíteni (deploy) kell a felhőbe. A telepítés során a függvény forráskódját tartalmazó archív fájlt fel kell tölteni egy Google Cloud Storage vödörbe. A függvény telepítéséhez az alábbi lehetőségek állnak rendelkezésre:
+Mielőtt egy függvény végrehajthatóvá válna, üzembe kell helyezni a felhőben. Az üzembe helyezés során a függvény forráskódját tartalmazó archív fájlt fel kell tölteni egy Google Cloud Storage tárolóvödörbe. A függvény telepítéséhez az alábbi lehetőségek állnak rendelkezésre:
 
-1. Telepítés a helyi gépről (Local Machine)
+1. Telepítés helyi gépről
 Hajtsuk végre a következő gcloud parancsot (a szükséges paraméterek behelyettesítése után):
 
 ```bash
 gcloud functions deploy NAME --runtime RUNTIME TRIGGER [FLAGS...]
 ```
 
-2. Telepítés verziókezelő rendszerből (Source Control)
+2. Telepítés verziókezelő rendszerből
 Hajtsuk végre a következő gcloud parancsot (a szükséges paraméterek behelyettesítése után):
 
 ```bash
@@ -1997,10 +1997,10 @@ gcloud functions deploy NAME --source https://source.developers.google.com/ \
         --runtime RUNTIME TRIGGER... [FLAGS...]
 ```
 
-3. Telepítés a GCP Konzolról (GCP Console)
+3. Telepítés a GCP konzolról
 Ezt a módszert egy HTTP-függvény létrehozásán keresztül, részletesebben is bemutatjuk. Hajtsuk végre az alábbi lépéseket a megadott sorrendben:
 
-Nyissuk meg a Cloud Console Functions Overview (Függvények áttekintése) oldalát (amint a 9-1. ábrán látható).
+Nyissuk meg a Cloud Console felületén a Functions Overview (Függvények áttekintése) oldalt (amint a 9-1. ábrán látható).
 
 Győződjünk meg arról, hogy az a projekt van kiválasztva, amelyben engedélyeztük a Cloud Functions használatát.
 
@@ -2020,11 +2020,11 @@ A Runtime (Futásidejű környezet) legördülő menüből válasszuk ki a kív�
 
 Az oldal alján kattintsunk a Deploy (Telepítés) gombra.
 
-A Deploy gombra kattintás után a Cloud Console automatikusan átirányít minket a Cloud Functions Overview oldalra.
+A Deploy gombra kattintás után a Cloud Console automatikusan átirányít minket a Cloud Functions áttekintő oldalára.
 
 Amint a telepítés befejeződött, a függvény működését úgy tesztelhetjük, hogy a függvényünk melletti menüből kiválasztjuk a Test function (Függvény tesztelése) lehetőséget (amint az a 9-2. ábrán látható).
 
-*9-1. ábra: A Cloud Functions Overview oldal a Google Cloud Console-ban*
+*9-1. ábra: A Cloud Functions áttekintő oldala a Google Cloud Console-ban*
 
 ![9-1. ábra](<../Cloud Programming_MSc_Juhasz_IId-94_1.png>)
 
@@ -2032,13 +2032,13 @@ Amint a telepítés befejeződött, a függvény működését úgy tesztelhetj�
 
 ![9-2. ábra](<../Cloud Programming_MSc_Juhasz_IId-95_1.png>)
 
-A függvény végrehajtása az automatikusan generált naplóbejegyzések (logok) megtekintésével egyszerűen ellenőrizhető. A Cloud Functions Overview oldalon nyissuk le a függvényhez tartozó menüt, és kattintsunk a View logs (Naplók megtekintése) opcióra. Ekkor egy, a 9-3. ábrához hasonló naplózó ablak jelenik meg.
+A függvény végrehajtása az automatikusan generált naplóbejegyzések megtekintésével egyszerűen ellenőrizhető. A Cloud Functions áttekintő oldalán nyissuk le a függvényhez tartozó menüt, és kattintsunk a View logs (Naplók megtekintése) opcióra. Ekkor egy, a 9-3. ábrához hasonló naplózó ablak jelenik meg.
 
-*9-3. ábra: Cloud Functions naplóablak a Google Cloud Console-ban*
+*9-3. ábra: A Cloud Functions naplóablaka a Google Cloud Console-ban*
 
 ![9-3. ábra](<../Cloud Programming_MSc_Juhasz_IId-95_2.png>)
 
-Egy Cloud Storage esemény által kiváltott háttérfüggvény létrehozását és tesztelését bemutató, részletes, lépésről lépésre haladó oktatóanyag (tutorial) a következő linken található:
+Egy Cloud Storage esemény által kiváltott háttérfüggvény létrehozását és tesztelését bemutató, részletes, lépésről lépésre haladó útmutató a következő linken található:
 https://cloud.google.com/functions/docs/tutorials/storage
 
 ---
@@ -2049,7 +2049,7 @@ Egy felhőalkalmazás létrehozása számos kész (off-the-shelf) és egyedi fel
 
 ### 10.1 A Google Pub/Sub áttekintése
 
-A Google Pub/Sub egy magas rendelkezésre állású, aszinkron, valós idejű üzenetküldő szolgáltatás, amely a közzétevő-feliratkozó (publish-subscribe) filozófián alapul. A Pub/Sub egy alacsony késleltetésű, nagy áteresztőképességű (high-throughput) rendszer, amely valamennyi Google Cloud régióban működik, univerzális üzenetküldő és eseménytovábbító infrastruktúrát biztosítva a globális felhőalkalmazások számára. A Pub/Sub használható általános üzenetkezelő köztesrétegként (messaging middleware), Cloud Functions-t aktiváló eseménytovábbító rendszerként, vagy akár adatfolyam-kezelő (data streaming) rétegként is.
+A Google Pub/Sub egy magas rendelkezésre állású, aszinkron, valós idejű üzenetküldő szolgáltatás, amely a közzétevő-feliratkozó filozófián alapul. A Pub/Sub egy alacsony késleltetésű, nagy áteresztőképességű rendszer, amely valamennyi Google Cloud régióban működik, univerzális üzenetküldő és eseménytovábbító infrastruktúrát biztosítva a globális felhőalkalmazások számára. A Pub/Sub használható általános üzenetkezelő köztesrétegként, Cloud Functions-t aktiváló eseménytovábbító rendszerként, vagy akár adatfolyam-kezelő rétegként is.
 
 A Pub/Sub a Közzétevőket (Publishers) és a Feliratkozókat (Subscribers) Témakörökön (Topics) keresztül köti össze. A témakör egy elnevezett erőforrás, amelyre a közzétevők üzeneteket küldenek. A feliratkozók Feliratkozásokat (Subscriptions) hoznak létre, amelyek szintén elnevezett erőforrások, és egyetlen, specifikus témakörhöz tartozó üzenetfolyamot reprezentálnak, amelyet a feliratkozó alkalmazáshoz kell kézbesíteni. Egy Üzenet (Message) adatokból (hasznos teher / payload) és a tartalmat leíró (opcionális) attribútumokból áll, amelyeket a közzétevő küld egy témakörre, és amelyek végül a feliratkozókhoz kerülnek kézbesítésre. Az üzenetattribútum egy kulcs-érték pár, amelyet a közzétevő határozhat meg az üzenethez.
 
@@ -2089,7 +2089,7 @@ Az Y és Z feliratkozók ugyanakkor ugyanattól a C közzétevőtől szeretnéne
 
 ![10-3. ábra](<../Cloud Programming_MSc_Juhasz_IId-98_1.png>)
 
-### 10.2 A Pub/Sub üzenetáramlása (Message flow)
+### 10.2 A Pub/Sub üzenetfolyama
 
 Ebben a fejezetben részletesen megvizsgáljuk az üzenetkézbesítés lépéseit. Egy közzétevőtől érkező üzenet kézbesítése a következő lépésekből áll a Pub/Sub infrastruktúrában:
 
@@ -2118,7 +2118,7 @@ https://cloud.google.com/pubsub/architecture
 
 ### 10.3 Üzenetkézbesítési példa
 
-Miután megismertük a Pub/Sub szolgáltatás általános filozófiáját és működését, most egy rövid példán keresztül a gyakorlatban is szemléltetjük azt. A példa egy Háttérfüggvényből (Background Function) áll, amelyet egy Pub/Sub üzenet fog aktiválni.
+Miután megismertük a Pub/Sub szolgáltatás általános filozófiáját és működését, most egy rövid példán keresztül a gyakorlatban is szemléltetjük azt. A példa egy háttérfüggvényből áll, amelyet egy Pub/Sub üzenet fog aktiválni.
 
 A függvény forráskódja alább látható. Kap egy üzenetet a Pub/Sub-tól, kinyeri annak tartalmát, és beilleszti a "Hello …" kimeneti szövegbe, ezzel személyre szabott köszöntést generálva.
 
@@ -2534,7 +2534,7 @@ Egy képfájl feltöltése a Google Cloud Storage-ba.
 
 A feltöltés kivált (triggerel) egy felhőfüggvényt, amely meghívja a Vision AI szolgáltatást a kép szöveges tartalmának kinyeréséhez.
 
-A kinyert szöveg beíródik egy meghatározott Pub/Sub témakörbe (topic).
+A kinyert szöveg beíródik egy meghatározott Pub/Sub témakörbe.
 
 A témaüzenet aktivál egy újabb felhőfüggvényt, amely meghívja a Cloud Translation szolgáltatást.
 
@@ -2543,18 +2543,11 @@ A lefordított szöveges üzenetek bekerülnek egy másik Pub/Sub témakörbe.
 Végül egy újabb felhőfüggvény aktiválódik, amely az eredményeket elmenti a Google Cloud Storage-ba.
 
 A szöveg kinyeréséért felelős függvény
-Az alábbi kódrészlet egy Cloud Storage esemény által kiváltott háttérfüggvényt (Background Function) implementál az accept() metódus segítségével. Ez a függvény végzi el a szövegfelismerési feladatot, és az eredményt közzéteszi egy Pub/Sub témakörben.
+Az alábbi kódrészlet egy Cloud Storage esemény által kiváltott háttérfüggvényt implementál az `accept()` metódus segítségével. Ez a függvény végzi el a szövegfelismerési feladatot, és az eredményt közzéteszi egy Pub/Sub témakörben.
 
-Az accept() metódus lekéri a fájlt a Storage tárolóvödörből, majd meghívja a detectText() metódust. Ebben történnek a fő feldolgozási lépések: először egy ImageAnnotatorClient példány jön létre, majd a szöveg detektálása következik a batchAnnotateImages metódussal, a kérést TEXT_DETECTION típusúra állítva. Ezután a Vision API segítségével a rendszer megpróbálja azonosítani a kép szövegének nyelvét is a TranslationServiceClient használatával. Utolsó lépésként minden azonosított nyelvhez egy fordítási üzenetet tesz közzé a Pub/Sub-on keresztül.
-
+Az `accept()` metódus lekéri a fájlt a tárolóvödörből, majd meghívja a `detectText()` metódust. Ebben történnek a fő feldolgozási lépések: először egy `ImageAnnotatorClient` példány jön létre, majd a szöveg detektálása következik a `batchAnnotateImages` metódussal, a kérést `TEXT_DETECTION` típusúra állítva. Ezután a Vision API segítségével a rendszer megpróbálja azonosítani a kép szövegének nyelvét is a `TranslationServiceClient` használatával. Utolsó lépésként minden azonosított nyelvhez egy fordítási üzenetet tesz közzé a Pub/Sub-on keresztül.
 
 Példa a szöveg- és nyelvfelismerést végző függvényre:
-
-Az alábbi kódrészlet egy Cloud Storage esemény által kiváltott háttérfüggvényt (Background Function) implementál az `accept()` metódus segítségével. Ez a függvény végzi el a szövegfelismerési feladatot, és az eredményt közzéteszi egy Pub/Sub témakörben.
-
-Az `accept()` metódus lekéri a fájlt a Storage tárolóvödörből, majd meghívja a `detectText()` metódust. Ebben történnek a fő feldolgozási lépések: először egy `ImageAnnotatorClient` példány jön létre, majd a szöveg detektálása következik a `batchAnnotateImages` metódussal, a kérést `TEXT_DETECTION` típusúra állítva. Ezután a Vision API segítségével a rendszer megpróbálja azonosítani a kép szövegének nyelvét is a `TranslationServiceClient` használatával. Utolsó lépésként minden azonosított nyelvhez egy fordítási üzenetet tesz közzé a Pub/Sub-on keresztül.
-
-Példa a szöveg- és nyelvfelismerést végző függvényre (function to perform text and language detection on images):
 
 ```java
 import com.google.cloud.functions.BackgroundFunction;
@@ -2694,16 +2687,9 @@ public class OcrProcessImage implements BackgroundFunction<GcsEvent> {
 ```
 
 A szöveg fordításáért felelős függvény
-Az alkalmazás következő fázisában történik a fordítás. Az OcrTranslateText osztály egy olyan háttérfüggvényt implementál, amely a Pub/Sub témakörből érkező fordítási kérésekre válaszol.
-
-Az accept() metódus kinyeri a forrásszöveget és a célnyelv kódját az üzenetből, majd a TranslationServiceClient segítségével elvégzi a fordítást. A lefordított szöveg és az eredeti fájlnév egy újabb Pub/Sub üzenetbe kerül, amely a következő állomásra továbbítja az adatokat.
-
+Az alkalmazás következő fázisában történik a fordítás. Az `OcrTranslateText` osztály egy olyan háttérfüggvényt implementál, amely a Pub/Sub témakörből érkező fordítási kérésekre válaszol. Az `accept()` metódust a rendszer minden beérkező üzenethez meghívja. Első feldolgozási lépésként a metódus kinyeri a forrásszöveget és a célnyelv kódját a beérkező üzenetből, majd létrehoz egy `TranslationServiceClient` példányt. Ezt követően egy megfelelő fordítási kérés objektum készül, majd a szöveg fordítása a `translateText` metódus meghívásával történik meg. A visszakapott lefordított szöveg és a kimeneti fájl neve egy új Pub/Sub üzenetbe csomagolva kerül továbbításra a felhőbe a konstruktorban létrehozott `publisher.publish` metóduson keresztül.
 
 Példa a fordítást végző függvényre:
-
-Az alkalmazás következő fázisában történik a fordítás. Az `OcrTranslateText` osztály egy olyan háttérfüggvényt (Background Function) implementál, amely a Pub/Sub témakörből érkező fordítási kérésekre válaszol. Az `accept()` metódust a rendszer minden beérkező üzenethez meghívja. Első feldolgozási lépésként a metódus kinyeri a forrásszöveget és a célnyelv kódját a beérkező üzenetből, majd létrehoz egy `TranslationServiceClient` példányt. Ezt követően egy megfelelő fordítási kérés objektum készül, majd a szöveg fordítása a `translateText` metódus meghívásával történik meg. A visszakapott lefordított szöveg és a kimeneti fájl neve egy új Pub/Sub üzenetbe csomagolva kerül továbbításra a felhőbe a konstruktorban létrehozott publisher `publish` metódusán keresztül.
-
-Példa a fordítást végző függvényre (function to translate text):
 
 ```java
 import com.google.cloud.functions.BackgroundFunction;
@@ -2802,14 +2788,9 @@ public class OcrTranslateText implements BackgroundFunction<PubSubMessage> {
 ```
 
 Az eredmények mentéséért felelős függvény
-Az alkalmazás utolsó függvénye a fordítási eredmények elmentéséért felelős egy Cloud Storage tárolóvödörbe. Az accept() metódus meghívásakor a bejövő üzenetből kinyeri a kimeneti fájl nevét és a nyelvi kódot, majd ezeket összefűzve egy új fájlnevet hoz létre. A lefordított szöveg végül a Storage.create() metódus segítségével íródik ki a felhőbe.
-
+Az alkalmazás utolsó függvénye a fordítási eredmények elmentéséért felelős egy Cloud Storage tárolóvödörbe. A Storage szolgáltatásügyfélre mutató referenciát az osztály statikus blokkja szerzi meg. Az `accept()` metódus meghívásakor a bejövő üzenetből kinyeri a kimeneti fájl nevét és a nyelvi kódot, majd ezekből összefűzéssel egy új fájlnevet hoz létre. A lefordított szöveg végül a `Storage.create()` metódus segítségével íródik ki az új fájlba.
 
 Példa az eredmény mentését végző függvényre:
-
-Az alkalmazás utolsó függvénye a fordítási eredmények elmentéséért felelős egy Cloud Storage tárolóvödörbe (Storage bucket). A Storage szolgáltatásügyfélre (service client) mutató referenciát az osztály statikus blokkja szerzi meg. Az `accept()` metódus meghívásakor a bejövő üzenetből kinyeri a kimeneti fájl nevét és a nyelvi kódot (language code), majd ezekből összefűzéssel (concatenation) egy új fájlnevet hoz létre. A lefordított szöveg végül a `Storage.create()` metódus segítségével íródik ki az új fájlba.
-
-Példa az eredmény mentését végző függvényre (function to save results in Storage):
 
 ```java
 import com.google.cloud.functions.BackgroundFunction;
@@ -2857,7 +2838,7 @@ Ez a példa jól szemlélteti a felhőszolgáltatás-orkesztráció alapvető ko
 
 ## 13. Következtetések
 
-E könyv elsődleges célja az volt, hogy átfogó háttéranyagot biztosítson a Pannon Egyetem Cloud Programming (Felhőprogramozás) MSc kurzusához. Ennek megfelelően nem törekedett arra, hogy a felhőalapú számítástechnika valamennyi elméleti és gyakorlati aspektusát lefedő, lezárt mű legyen. A kurzus fókusza kifejezetten a felhőrendszerek programozásán állt, szemben a felhőinfrastruktúrák kiépítésével és üzemeltetésével, ezért a rendszermenedzsmenttel kapcsolatos témákat nagyrészt érintetlenül hagytuk. Szintén nem volt célunk a programozási technikák olyan mélységű tárgyalása, amely a professzionális felhőfejlesztők napi munkájához szükséges; ugyanakkor bízom benne, hogy a könyv hasznos bevezetést nyújtott a legfontosabb alapfogalmakba. Reményeim szerint az itt bemutatott gyakorlati programozási részletek elegendő alapot adnak az érdeklődő hallgatóknak ahhoz, hogy önállóan is elinduljanak a felhőalapú számítástechnika rendkívül izgalmas világában.
+E könyv elsődleges célja az volt, hogy átfogó háttéranyagot biztosítson a Pannon Egyetem Felhőprogramozás MSc kurzusához. Ennek megfelelően nem törekedett arra, hogy a felhőalapú számítástechnika valamennyi elméleti és gyakorlati aspektusát lefedő, lezárt mű legyen. A kurzus fókusza kifejezetten a felhőrendszerek programozásán állt, szemben a felhőinfrastruktúrák kiépítésével és üzemeltetésével, ezért a rendszermenedzsmenttel kapcsolatos témákat nagyrészt érintetlenül hagytuk. Szintén nem volt célunk a programozási technikák olyan mélységű tárgyalása, amely a professzionális felhőfejlesztők napi munkájához szükséges; ugyanakkor bízom benne, hogy a könyv hasznos bevezetést nyújtott a legfontosabb alapfogalmakba. Reményeim szerint az itt bemutatott gyakorlati programozási részletek elegendő alapot adnak az érdeklődő hallgatóknak ahhoz, hogy önállóan is elinduljanak a felhőalapú számítástechnika rendkívül izgalmas világában.
 
 Bár a jövőt soha nem lehet hajszálpontosan megjósolni, nagy biztonsággal kijelenthető, hogy a felhőrendszerek szerepe és képességei a következő években folyamatosan bővülni fognak. Ez alapvető változásokat hoz a fejlesztők munkájába és a teljes szoftveripar működésébe is. Ahogyan korábban a webes technológiák forradalmasították az asztali és mobilalkalmazásokat, úgy a felhő is hasonlóan mély hatást fog gyakorolni a jövő szoftvereire. Már ma is elvárás, hogy az alkalmazások legalább az adatbeviteli és kimeneti (I/O) műveletek szintjén integrálódjanak a felhővel, lehetővé téve az ott tárolt adatok feldolgozását vagy az eredmények felhőbe mentését. A jövő alkalmazásai egyre intenzívebben fognak támaszkodni a felhőszolgáltatásokra, ami végül valódi, felhő-natív (cloud-native) komponensekből felépülő szoftverrendszerekhez vezet.
 

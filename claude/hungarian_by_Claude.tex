@@ -133,6 +133,10 @@
 
 \begin{document}
 
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
 \begin{figure}
 \centering
 \includegraphics{../Cloud Programming_MSc_Juhasz_IId-1_1.jpg}
@@ -2259,9 +2263,9 @@ választékát kínálja a felhasználók számára, a dedikált
 komponensszolgáltatásoktól kezdve a teljes alkalmazásokig, mindezt a
 legmagasabb szintű rendelkezésre állás (high availability) mellett. Az
 AWS által kínált szolgáltatáskategóriák teljes listája a hivatalos
-weboldalán található (ennek egy pillanatképe a 4-1. ábrán látható).
-Minden egyes kategória számos további, specializált szolgáltatást foglal
-magában.
+weboldalán található {[}13{]} (ennek egy pillanatképe a 4-1. ábrán
+látható). Minden egyes kategória számos további, specializált
+szolgáltatást foglal magában.
 
 \begin{figure}
 \centering
@@ -2684,19 +2688,24 @@ automatizálhatják a napi rutin- vagy üzemeltetési feladatokat. Néhány
 alapvető CLI példa az EC2 példányok lekérdezésére, indítására, valamint
 üzenetek közzétételére:
 
-Bash \$ aws ec2 describe-instances \$ aws ec2 start-instances
---instance-ids i-1348636c \$ aws sns publish --topic-arn
-arn:aws:sns:us-east-1:546419318123:OperationsError --message ``Script
-Failure'' \$ aws sqs receive-message --queue-url
-https://queue.amazonaws.com/546419318123/Test \$ aws help Java SDK Az
-AWS Java SDK egy robusztus, átfogó osztálykönyvtárat biztosít az AWS
-szolgáltatások programozott vezérléséhez (a hivatalos API dokumentáció a
-https://sdk.amazonaws.com/java/api/latest/ címen érhető el). Érdemes
-megjegyezni, hogy az AWS Java SDK jelenleg több mint 73 000 Java
-osztályt és interfészt tartalmaz -- ez nagyjából a tízszerese a standard
-Java SE platform beépített osztályainak! Ez a szám is jól illusztrálja
-az AWS infrastruktúrájának és szolgáltatási palettájának elképesztő
-méretét.
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\NormalTok{ aws ec2 describe{-}instances}
+\ExtensionTok{$}\NormalTok{ aws ec2 start{-}instances }\AttributeTok{{-}{-}instance{-}ids}\NormalTok{ i{-}1348636c}
+\ExtensionTok{$}\NormalTok{ aws sns publish }\AttributeTok{{-}{-}topic{-}arn}\NormalTok{ arn:aws:sns:us{-}east{-}1:546419318123:OperationsError }\AttributeTok{{-}{-}message} \StringTok{"Script Failure"}
+\ExtensionTok{$}\NormalTok{ aws sqs receive{-}message }\AttributeTok{{-}{-}queue{-}url}\NormalTok{ https://queue.amazonaws.com/546419318123/Test}
+\ExtensionTok{$}\NormalTok{ aws help}
+\end{Highlighting}
+\end{Shaded}
+
+Java SDK Az AWS Java SDK egy robusztus, átfogó osztálykönyvtárat
+biztosít az AWS szolgáltatások programozott vezérléséhez (a hivatalos
+API dokumentáció a https://sdk.amazonaws.com/java/api/latest/ címen
+érhető el). Érdemes megjegyezni, hogy az AWS Java SDK jelenleg több mint
+73 000 Java osztályt és interfészt tartalmaz -- ez nagyjából a
+tízszerese a standard Java SE platform beépített osztályainak! Ez a szám
+is jól illusztrálja az AWS infrastruktúrájának és szolgáltatási
+palettájának elképesztő méretét.
 
 A Java SDK hivatalos dokumentációja számtalan kódpéldát tartalmaz,
 amelyek különböző felhasználási eseteken (use cases) keresztül
@@ -2707,49 +2716,74 @@ Az első kódrészlet bemutatja, hogyan hozható létre és indítható el
 programozottan egy új Elastic Compute (EC2) virtuális gép példány, és
 hogyan rendelhetünk hozzá egy metaadat-címkét (Tag):
 
-Java String name = args{[}0{]}; // A példány (instance) neve String
-amiId = args{[}1{]}; // Az operációs rendszer lemezképének ID-ja (AMI
-ID)
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{String}\NormalTok{ name }\OperatorTok{=}\NormalTok{ args}\OperatorTok{[}\DecValTok{0}\OperatorTok{];}       \CommentTok{// A példány (instance) neve}
+\BuiltInTok{String}\NormalTok{ amiId }\OperatorTok{=}\NormalTok{ args}\OperatorTok{[}\DecValTok{1}\OperatorTok{];}      \CommentTok{// Az operációs rendszer lemezképének ID{-}ja (AMI ID)}
 
-Region region = Region.US\_WEST\_2; Ec2Client ec2 = Ec2Client.builder()
-.region(region) .build();
+\BuiltInTok{Region}\NormalTok{ region }\OperatorTok{=} \BuiltInTok{Region}\OperatorTok{.}\FunctionTok{US\_WEST\_2}\OperatorTok{;}
+\NormalTok{Ec2Client ec2 }\OperatorTok{=}\NormalTok{ Ec2Client}\OperatorTok{.}\FunctionTok{builder}\OperatorTok{()}
+        \OperatorTok{.}\FunctionTok{region}\OperatorTok{(}\NormalTok{region}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{build}\OperatorTok{();}
 
-// A futtatási kérés összeállítása RunInstancesRequest runRequest =
-RunInstancesRequest.builder() .imageId(amiId)
-.instanceType(InstanceType.T1\_MICRO) .maxCount(1) .minCount(1)
-.build();
+\CommentTok{// A futtatási kérés összeállítása}
+\NormalTok{RunInstancesRequest runRequest }\OperatorTok{=}\NormalTok{ RunInstancesRequest}\OperatorTok{.}\FunctionTok{builder}\OperatorTok{()}
+        \OperatorTok{.}\FunctionTok{imageId}\OperatorTok{(}\NormalTok{amiId}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{instanceType}\OperatorTok{(}\NormalTok{InstanceType}\OperatorTok{.}\FunctionTok{T1\_MICRO}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{maxCount}\OperatorTok{(}\DecValTok{1}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{minCount}\OperatorTok{(}\DecValTok{1}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{build}\OperatorTok{();}
 
-// A példány létrehozása és indítása RunInstancesResponse response =
-ec2.runInstances(runRequest); String instanceId =
-response.instances().get(0).instanceId();
+\CommentTok{// A példány létrehozása és indítása}
+\NormalTok{RunInstancesResponse response }\OperatorTok{=}\NormalTok{ ec2}\OperatorTok{.}\FunctionTok{runInstances}\OperatorTok{(}\NormalTok{runRequest}\OperatorTok{);}
+\BuiltInTok{String}\NormalTok{ instanceId }\OperatorTok{=}\NormalTok{ response}\OperatorTok{.}\FunctionTok{instances}\OperatorTok{().}\FunctionTok{get}\OperatorTok{(}\DecValTok{0}\OperatorTok{).}\FunctionTok{instanceId}\OperatorTok{();}
 
-// Címke (Tag) létrehozása a példány elnevezéséhez Tag tag =
-Tag.builder() .key(``Name'') .value(name) .build();
+\CommentTok{// Címke (Tag) létrehozása a példány elnevezéséhez}
+\NormalTok{Tag tag }\OperatorTok{=}\NormalTok{ Tag}\OperatorTok{.}\FunctionTok{builder}\OperatorTok{()}
+        \OperatorTok{.}\FunctionTok{key}\OperatorTok{(}\StringTok{"Name"}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{value}\OperatorTok{(}\NormalTok{name}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{build}\OperatorTok{();}
 
-CreateTagsRequest tagRequest = CreateTagsRequest.builder()
-.resources(instanceId) .tags(tag) .build();
+\NormalTok{CreateTagsRequest tagRequest }\OperatorTok{=}\NormalTok{ CreateTagsRequest}\OperatorTok{.}\FunctionTok{builder}\OperatorTok{()}
+        \OperatorTok{.}\FunctionTok{resources}\OperatorTok{(}\NormalTok{instanceId}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{tags}\OperatorTok{(}\NormalTok{tag}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{build}\OperatorTok{();}
 
-try \{ ec2.createTags(tagRequest); System.out.printf( ``Successfully
-started EC2 Instance \%s based on AMI \%s\n'', instanceId, amiId); \}
-catch (Ec2Exception e) \{
-System.err.println(e.awsErrorDetails().errorMessage()); System.exit(1);
-\} A második példa azt szemlélteti, hogyan férhetünk hozzá egy már futó
-EC2 példányhoz (az instanceID ismeretében), és hogyan engedélyezhetjük
-rajta a részletes teljesítménymonitorozást (CloudWatch Detailed
-Monitoring):
+\ControlFlowTok{try} \OperatorTok{\{}
+\NormalTok{    ec2}\OperatorTok{.}\FunctionTok{createTags}\OperatorTok{(}\NormalTok{tagRequest}\OperatorTok{);}
+    \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}
+           \StringTok{"Successfully started EC2 Instance }\SpecialCharTok{\%s}\StringTok{ based on AMI }\SpecialCharTok{\%s\textbackslash{}n}\StringTok{"}\OperatorTok{,}
+\NormalTok{           instanceId}\OperatorTok{,}\NormalTok{ amiId}\OperatorTok{);}
+\OperatorTok{\}} \ControlFlowTok{catch} \OperatorTok{(}\NormalTok{Ec2Exception e}\OperatorTok{)} \OperatorTok{\{}
+    \BuiltInTok{System}\OperatorTok{.}\FunctionTok{err}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\NormalTok{e}\OperatorTok{.}\FunctionTok{awsErrorDetails}\OperatorTok{().}\FunctionTok{errorMessage}\OperatorTok{());}
+    \BuiltInTok{System}\OperatorTok{.}\FunctionTok{exit}\OperatorTok{(}\DecValTok{1}\OperatorTok{);}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
-Java String instanceId = args{[}0{]};
+A második példa azt szemlélteti, hogyan férhetünk hozzá egy már futó EC2
+példányhoz (az instanceID ismeretében), és hogyan engedélyezhetjük rajta
+a részletes teljesítménymonitorozást (CloudWatch Detailed Monitoring):
 
-Region region = Region.US\_WEST\_2; Ec2Client ec2 = Ec2Client.builder()
-.region(region) .build();
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{String}\NormalTok{ instanceId }\OperatorTok{=}\NormalTok{ args}\OperatorTok{[}\DecValTok{0}\OperatorTok{];}
 
-MonitorInstancesRequest request = MonitorInstancesRequest.builder()
-.instanceIds(instanceId) .build();
+\BuiltInTok{Region}\NormalTok{ region }\OperatorTok{=} \BuiltInTok{Region}\OperatorTok{.}\FunctionTok{US\_WEST\_2}\OperatorTok{;}
+\NormalTok{Ec2Client ec2 }\OperatorTok{=}\NormalTok{ Ec2Client}\OperatorTok{.}\FunctionTok{builder}\OperatorTok{()}
+        \OperatorTok{.}\FunctionTok{region}\OperatorTok{(}\NormalTok{region}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{build}\OperatorTok{();}
 
-ec2.monitorInstances(request);
+\NormalTok{MonitorInstancesRequest request }\OperatorTok{=}\NormalTok{ MonitorInstancesRequest}\OperatorTok{.}\FunctionTok{builder}\OperatorTok{()}
+        \OperatorTok{.}\FunctionTok{instanceIds}\OperatorTok{(}\NormalTok{instanceId}\OperatorTok{)}
+        \OperatorTok{.}\FunctionTok{build}\OperatorTok{();}
 
-System.out.printf(``Successfully enabled monitoring for instance
-\%s\n'', instanceId);
+\NormalTok{ec2}\OperatorTok{.}\FunctionTok{monitorInstances}\OperatorTok{(}\NormalTok{request}\OperatorTok{);}
+
+\BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}\StringTok{"Successfully enabled monitoring for instance }\SpecialCharTok{\%s\textbackslash{}n}\StringTok{"}\OperatorTok{,}
+\NormalTok{                    instanceId}\OperatorTok{);}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -3040,8 +3074,13 @@ az alábbiakban szemlélteti a használatát:
 Az első példa kilistázza a kiválasztott projektben található, az
 us-central1-a zónában futó összes Compute Engine virtuális gépet:
 
-Bash gcloud compute instances list --filter=``zone:us-central1-a'' A
-parancsban a compute kulcsszó jelzi a hívott IaaS szolgáltatást, az
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gcloud}\NormalTok{ compute instances list }\AttributeTok{{-}{-}filter}\OperatorTok{=}\StringTok{"zone:us{-}central1{-}a"}
+\end{Highlighting}
+\end{Shaded}
+
+A parancsban a compute kulcsszó jelzi a hívott IaaS szolgáltatást, az
 instances list a kért műveletet, míg a --filter kapcsolóval szűkítjük a
 keresést a megadott zónára.
 
@@ -3049,12 +3088,17 @@ A következő parancs egy táblázatos formátumban listázza a felhasználóhoz
 tartozó összes projektet, megjelenítve a projekt nevét, azonosítóját és
 a létrehozás helyi időzónára (LOCAL) konvertált pontos idejét:
 
-Bash gcloud projects list\\
---format=``table(name, project\_id, createTime.date(tz=LOCAL))'' Aki nem
-szeretne lokálisan SDK-t telepíteni, annak a GCP Console egy beépített,
-azonnal használható parancssort kínál. A jobb felső sarokban található
-\textgreater\_ (Aktiválás) ikonra kattintva a böngészőablak alján
-megnyílik a Google Cloud Shell (lásd 6-2. ábra).
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gcloud}\NormalTok{ projects list }\DataTypeTok{\textbackslash{}}
+    \AttributeTok{{-}{-}format}\OperatorTok{=}\StringTok{"table(name, project\_id, createTime.date(tz=LOCAL))"}
+\end{Highlighting}
+\end{Shaded}
+
+Aki nem szeretne lokálisan SDK-t telepíteni, annak a GCP Console egy
+beépített, azonnal használható parancssort kínál. A jobb felső sarokban
+található \textgreater\_ (Aktiválás) ikonra kattintva a böngészőablak
+alján megnyílik a Google Cloud Shell (lásd 6-2. ábra).
 
 \begin{figure}
 \centering
@@ -3092,123 +3136,164 @@ teljes, futtatható mintaprogram a hivatalos GitHub-tárolóban érhető el.)
 
 Példányok listázása
 
-Java Page instancePage;
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Page}\OperatorTok{\textless{}}\NormalTok{Instance}\OperatorTok{\textgreater{}}\NormalTok{ instancePage}\OperatorTok{;}
 
-// A Compute szolgáltatás kliensének inicializálása Compute compute =
-ComputeOptions.getDefaultInstance().getService();
+\CommentTok{// A Compute szolgáltatás kliensének inicializálása}
+\NormalTok{Compute compute }\OperatorTok{=}\NormalTok{ ComputeOptions}\OperatorTok{.}\FunctionTok{getDefaultInstance}\OperatorTok{().}\FunctionTok{getService}\OperatorTok{();}
 
-System.out.println(``Listing VM instances \ldots{}'');
+\BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Listing VM instances ..."}\OperatorTok{);}
 
-// Virtuális gépek lekérése instancePage = compute.listInstances();
-System.out.printf(``Instances:\n'');
+\CommentTok{// Virtuális gépek lekérése}
+\NormalTok{instancePage }\OperatorTok{=}\NormalTok{ compute}\OperatorTok{.}\FunctionTok{listInstances}\OperatorTok{();}
+\BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}\StringTok{"Instances:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{);}
 
-Iterator iterator = instancePage.iterateAll(); while
-(iterator.hasNext()) \{ Instance instance = iterator.next();
-System.out.printf(``Instance: \%s\n'',
-instance.getInstanceId().getInstance()); System.out.printf(``Data
-instance:\n\%s\n\n'', instance); \} Példány indítása
+\BuiltInTok{Iterator}\OperatorTok{\textless{}}\NormalTok{Instance}\OperatorTok{\textgreater{}}\NormalTok{ iterator }\OperatorTok{=}\NormalTok{ instancePage}\OperatorTok{.}\FunctionTok{iterateAll}\OperatorTok{();}
+\ControlFlowTok{while} \OperatorTok{(}\NormalTok{iterator}\OperatorTok{.}\FunctionTok{hasNext}\OperatorTok{())} \OperatorTok{\{}
+\NormalTok{    Instance instance }\OperatorTok{=}\NormalTok{ iterator}\OperatorTok{.}\FunctionTok{next}\OperatorTok{();}
+    \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}\StringTok{"Instance: }\SpecialCharTok{\%s\textbackslash{}n}\StringTok{"}\OperatorTok{,}\NormalTok{ instance}\OperatorTok{.}\FunctionTok{getInstanceId}\OperatorTok{().}\FunctionTok{getInstance}\OperatorTok{());}
+    \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}\StringTok{"Data instance:}\SpecialCharTok{\textbackslash{}n\%s\textbackslash{}n\textbackslash{}n}\StringTok{"}\OperatorTok{,}\NormalTok{ instance}\OperatorTok{);}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
-Java // Kliens inicializálása Compute compute =
-ComputeOptions.getDefaultInstance().getService();
-System.out.println(``Starting VM instance \ldots{}'');
+Példány indítása
 
-// A kiválasztott példány elindítása Operation operation =
-compute.start(instanceId); if (operation == null) \{
-System.out.printf(``Error: Instance "\%s" does NOT exist.\n'',
-instanceId); return; \}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Kliens inicializálása}
+\NormalTok{Compute compute }\OperatorTok{=}\NormalTok{ ComputeOptions}\OperatorTok{.}\FunctionTok{getDefaultInstance}\OperatorTok{().}\FunctionTok{getService}\OperatorTok{();}
+\BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Starting VM instance ..."}\OperatorTok{);}
 
-// Várakozás a művelet (operation) befejeződésére try \{ operation =
-operation.waitFor(); \} catch (InterruptedException e) \{
-e.printStackTrace(); \} catch (TimeoutException e) \{
-e.printStackTrace(); \} Példány leállítása
+\CommentTok{// A kiválasztott példány elindítása}
+\BuiltInTok{Operation}\NormalTok{ operation }\OperatorTok{=}\NormalTok{ compute}\OperatorTok{.}\FunctionTok{start}\OperatorTok{(}\NormalTok{instanceId}\OperatorTok{);}
+\ControlFlowTok{if} \OperatorTok{(}\NormalTok{operation }\OperatorTok{==} \KeywordTok{null}\OperatorTok{)} \OperatorTok{\{}
+    \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}\StringTok{"Error: Instance }\SpecialCharTok{\textbackslash{}"\%s\textbackslash{}"}\StringTok{ does NOT exist.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{,}\NormalTok{ instanceId}\OperatorTok{);}
+    \ControlFlowTok{return}\OperatorTok{;}
+\OperatorTok{\}}
 
-Java // Kliens inicializálása Compute compute =
-ComputeOptions.getDefaultInstance().getService();
-System.out.println(``Stopping VM instance \ldots{}'');
+\CommentTok{// Várakozás a művelet (operation) befejeződésére}
+\ControlFlowTok{try} \OperatorTok{\{}
+\NormalTok{    operation }\OperatorTok{=}\NormalTok{ operation}\OperatorTok{.}\FunctionTok{waitFor}\OperatorTok{();}
+\OperatorTok{\}} \ControlFlowTok{catch} \OperatorTok{(}\BuiltInTok{InterruptedException}\NormalTok{ e}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    e}\OperatorTok{.}\FunctionTok{printStackTrace}\OperatorTok{();}
+\OperatorTok{\}} \ControlFlowTok{catch} \OperatorTok{(}\BuiltInTok{TimeoutException}\NormalTok{ e}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    e}\OperatorTok{.}\FunctionTok{printStackTrace}\OperatorTok{();}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
-// A kiválasztott példány leállítása Operation operation =
-compute.stop(instanceId); if (operation == null) \{
-System.out.printf(``Error: Instance "\%s" does NOT exist.\n'',
-instanceId); return; \}
+Példány leállítása
 
-// Várakozás a leállítás befejeződésére try \{ operation =
-operation.waitFor(); \} catch (InterruptedException e) \{
-e.printStackTrace(); \} catch (TimeoutException e) \{
-e.printStackTrace(); \} \#\#\# 6.4 A Cloud Storage programozott
-használata A Google Cloud Platform használatát bemutató fejezetet két
-olyan kódrészlettel zárjuk, amelyek a Google Cloud Storage
-objektumtároló API szintű vezérlését szemléltetik. Az első példa egy új
-tárolóvödör (bucket) létrehozását, míg a második az elérhető vödrök
-listázását mutatja be.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Kliens inicializálása}
+\NormalTok{Compute compute }\OperatorTok{=}\NormalTok{ ComputeOptions}\OperatorTok{.}\FunctionTok{getDefaultInstance}\OperatorTok{().}\FunctionTok{getService}\OperatorTok{();}
+\BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Stopping VM instance ..."}\OperatorTok{);}
+
+\CommentTok{// A kiválasztott példány leállítása}
+\BuiltInTok{Operation}\NormalTok{ operation }\OperatorTok{=}\NormalTok{ compute}\OperatorTok{.}\FunctionTok{stop}\OperatorTok{(}\NormalTok{instanceId}\OperatorTok{);}
+\ControlFlowTok{if} \OperatorTok{(}\NormalTok{operation }\OperatorTok{==} \KeywordTok{null}\OperatorTok{)} \OperatorTok{\{}
+   \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}\StringTok{"Error: Instance }\SpecialCharTok{\textbackslash{}"\%s\textbackslash{}"}\StringTok{ does NOT exist.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{,}\NormalTok{ instanceId}\OperatorTok{);}
+   \ControlFlowTok{return}\OperatorTok{;}
+\OperatorTok{\}}
+
+\CommentTok{// Várakozás a leállítás befejeződésére}
+\ControlFlowTok{try} \OperatorTok{\{}
+\NormalTok{    operation }\OperatorTok{=}\NormalTok{ operation}\OperatorTok{.}\FunctionTok{waitFor}\OperatorTok{();}
+\OperatorTok{\}} \ControlFlowTok{catch} \OperatorTok{(}\BuiltInTok{InterruptedException}\NormalTok{ e}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    e}\OperatorTok{.}\FunctionTok{printStackTrace}\OperatorTok{();}
+\OperatorTok{\}} \ControlFlowTok{catch} \OperatorTok{(}\BuiltInTok{TimeoutException}\NormalTok{ e}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    e}\OperatorTok{.}\FunctionTok{printStackTrace}\OperatorTok{();}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{a-cloud-storage-programozott-hasznuxe1lata}{%
+\subsubsection{6.4 A Cloud Storage programozott
+használata}\label{a-cloud-storage-programozott-hasznuxe1lata}}
+
+A Google Cloud Platform használatát bemutató fejezetet két olyan
+kódrészlettel zárjuk, amelyek a Google Cloud Storage objektumtároló API
+szintű vezérlését szemléltetik. Az első példa egy új tárolóvödör
+(bucket) létrehozását, míg a második az elérhető vödrök listázását
+mutatja be.
 
 Új tárolóvödör (Bucket) létrehozása
 
-Java import com.google.cloud.storage.Bucket; import
-com.google.cloud.storage.BucketInfo; import
-com.google.cloud.storage.Storage; import
-com.google.cloud.storage.StorageClass; import
-com.google.cloud.storage.StorageOptions;
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{storage}\OperatorTok{.}\ImportTok{Bucket}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{storage}\OperatorTok{.}\ImportTok{BucketInfo}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{storage}\OperatorTok{.}\ImportTok{Storage}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{storage}\OperatorTok{.}\ImportTok{StorageClass}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{storage}\OperatorTok{.}\ImportTok{StorageOptions}\OperatorTok{;}
 
-public class CreateBucketWithStorageClassAndLocation \{ public static
-void createBucketWithStorageClassAndLocation( String projectId, String
-bucketName) \{
+\KeywordTok{public} \KeywordTok{class}\NormalTok{ CreateBucketWithStorageClassAndLocation }\OperatorTok{\{}
+  \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{createBucketWithStorageClassAndLocation}\OperatorTok{(}
+            \BuiltInTok{String}\NormalTok{ projectId}\OperatorTok{,} \BuiltInTok{String}\NormalTok{ bucketName}\OperatorTok{)} \OperatorTok{\{}
+    
+    \CommentTok{// A GCP projektünk azonosítója (ID)}
+    \CommentTok{// String projectId = "your{-}project{-}id";}
 
-\begin{verbatim}
-// A GCP projektünk azonosítója (ID)
-// String projectId = "your-project-id";
+    \CommentTok{// A létrehozni kívánt globálisan egyedi GCS bucket név}
+    \CommentTok{// String bucketName = "your{-}unique{-}bucket{-}name";}
 
-// A létrehozni kívánt globálisan egyedi GCS bucket név
-// String bucketName = "your-unique-bucket-name";
+\NormalTok{    Storage storage }\OperatorTok{=}\NormalTok{ StorageOptions}\OperatorTok{.}\FunctionTok{newBuilder}\OperatorTok{().}\FunctionTok{setProjectId}\OperatorTok{(}\NormalTok{projectId}\OperatorTok{)}
+            \OperatorTok{.}\FunctionTok{build}\OperatorTok{().}\FunctionTok{getService}\OperatorTok{();}
 
-Storage storage = StorageOptions.newBuilder().setProjectId(projectId)
-        .build().getService();
+    \CommentTok{// A tárolási osztály (Storage Class) megadása}
+\NormalTok{    StorageClass storageClass }\OperatorTok{=}\NormalTok{ StorageClass}\OperatorTok{.}\FunctionTok{COLDLINE}\OperatorTok{;}
 
-// A tárolási osztály (Storage Class) megadása
-StorageClass storageClass = StorageClass.COLDLINE;
+    \CommentTok{// A földrajzi elhelyezkedés (Location) megadása}
+    \BuiltInTok{String}\NormalTok{ location }\OperatorTok{=} \StringTok{"ASIA"}\OperatorTok{;}
 
-// A földrajzi elhelyezkedés (Location) megadása
-String location = "ASIA";
+\NormalTok{    Bucket bucket }\OperatorTok{=}
+\NormalTok{        storage}\OperatorTok{.}\FunctionTok{create}\OperatorTok{(}
+\NormalTok{            BucketInfo}\OperatorTok{.}\FunctionTok{newBuilder}\OperatorTok{(}\NormalTok{bucketName}\OperatorTok{)}
+                \OperatorTok{.}\FunctionTok{setStorageClass}\OperatorTok{(}\NormalTok{storageClass}\OperatorTok{)}
+                \OperatorTok{.}\FunctionTok{setLocation}\OperatorTok{(}\NormalTok{location}\OperatorTok{)}
+                \OperatorTok{.}\FunctionTok{build}\OperatorTok{());}
 
-Bucket bucket =
-    storage.create(
-        BucketInfo.newBuilder(bucketName)
-            .setStorageClass(storageClass)
-            .setLocation(location)
-            .build());
+    \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}
+        \StringTok{"Created bucket "}
+            \OperatorTok{+}\NormalTok{ bucket}\OperatorTok{.}\FunctionTok{getName}\OperatorTok{()}
+            \OperatorTok{+} \StringTok{" in "}
+            \OperatorTok{+}\NormalTok{ bucket}\OperatorTok{.}\FunctionTok{getLocation}\OperatorTok{()}
+            \OperatorTok{+} \StringTok{" with storage class "}
+            \OperatorTok{+}\NormalTok{ bucket}\OperatorTok{.}\FunctionTok{getStorageClass}\OperatorTok{());}
+  \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
-System.out.println(
-    "Created bucket "
-        + bucket.getName()
-        + " in "
-        + bucket.getLocation()
-        + " with storage class "
-        + bucket.getStorageClass());
-\end{verbatim}
+Létező vödrök listázása
 
-\} \} Létező vödrök listázása
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{api}\OperatorTok{.}\ImportTok{gax}\OperatorTok{.}\ImportTok{paging}\OperatorTok{.}\ImportTok{Page}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{storage}\OperatorTok{.}\ImportTok{Bucket}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{storage}\OperatorTok{.}\ImportTok{Storage}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{storage}\OperatorTok{.}\ImportTok{StorageOptions}\OperatorTok{;}
 
-Java import com.google.api.gax.paging.Page; import
-com.google.cloud.storage.Bucket; import
-com.google.cloud.storage.Storage; import
-com.google.cloud.storage.StorageOptions;
+\KeywordTok{public} \KeywordTok{class}\NormalTok{ ListBuckets }\OperatorTok{\{}
+  \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{listBuckets}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ projectId}\OperatorTok{)} \OperatorTok{\{}
+    
+    \CommentTok{// A GCP projektünk azonosítója (ID)}
+    \CommentTok{// String projectId = "your{-}project{-}id";}
 
-public class ListBuckets \{ public static void listBuckets(String
-projectId) \{
+\NormalTok{    Storage storage }\OperatorTok{=}\NormalTok{ StorageOptions}\OperatorTok{.}\FunctionTok{newBuilder}\OperatorTok{().}\FunctionTok{setProjectId}\OperatorTok{(}\NormalTok{projectId}\OperatorTok{)}
+            \OperatorTok{.}\FunctionTok{build}\OperatorTok{().}\FunctionTok{getService}\OperatorTok{();}
+\NormalTok{    Page}\OperatorTok{\textless{}}\NormalTok{Bucket}\OperatorTok{\textgreater{}}\NormalTok{ buckets }\OperatorTok{=}\NormalTok{ storage}\OperatorTok{.}\FunctionTok{list}\OperatorTok{();}
 
-\begin{verbatim}
-// A GCP projektünk azonosítója (ID)
-// String projectId = "your-project-id";
-
-Storage storage = StorageOptions.newBuilder().setProjectId(projectId)
-        .build().getService();
-Page<Bucket> buckets = storage.list();
-
-for (Bucket bucket : buckets.iterateAll()) {
-  System.out.println(bucket.getName());
-}
-\end{verbatim}
-
-\} \}
+    \ControlFlowTok{for} \OperatorTok{(}\NormalTok{Bucket bucket }\OperatorTok{:}\NormalTok{ buckets}\OperatorTok{.}\FunctionTok{iterateAll}\OperatorTok{())} \OperatorTok{\{}
+      \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\NormalTok{bucket}\OperatorTok{.}\FunctionTok{getName}\OperatorTok{());}
+    \OperatorTok{\}}
+  \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -3606,7 +3691,9 @@ Dataset -- RDD) fogalmát, amely a Spark belső adatábrázolási
 struktúrája. Ez az elosztott adatstruktúra teszi lehetővé a Spark
 számára, hogy a műveleteket párhuzamosan, nagy hatékonysággal hajtsa
 végre a különböző csomópontokon, a fájlrendszert pedig csak a program
-elején és legvégén érintse.
+elején és legvégén érintse. Ezzel szemben, amint az a 7-7. ábrán
+látható, a Spark a köztes adatok kezelésére az elosztott memóriát (RDD)
+használja.
 
 \begin{figure}
 \centering
@@ -3749,7 +3836,8 @@ létrehozunk egy Spark klasztert, majd beküldjük a Spark jobot:
 Mindkét esetben a program kimenete a megadott felhős tárolóvödörben
 (gs://test-bucket22/results) jelenik meg. A végrehajtási naplók (logok)
 és a klaszter metrikái pedig könnyedén nyomon követhetők a Cloud Console
-Dataproc és Stackdriver (Operations) felületein.
+Dataproc és Stackdriver (Operations) felületein, amint azt a 7-9. ábra
+is mutatja.
 
 \begin{figure}
 \centering
@@ -4216,7 +4304,7 @@ el, amikor a \texttt{ssc} streaming kontextuson meghívjuk a
 
 \FunctionTok{Ha}\NormalTok{ a }\FunctionTok{feladat} \OperatorTok{(}\NormalTok{batch esetén}\OperatorTok{)}\NormalTok{ véget ér}\OperatorTok{,}\NormalTok{ automatikusan le is állítja az erőforrásokat}\OperatorTok{.}
 
-\FunctionTok{A}\NormalTok{ Cloud Dataflow tökéletes integrációt kínál a GCP többi }\FunctionTok{adatszolgáltatásával} \OperatorTok{(}\NormalTok{például adatokat képes olvasni a Cloud Storage}\OperatorTok{{-}}\NormalTok{ból vagy a Pub}\OperatorTok{/}\NormalTok{Sub}\OperatorTok{{-}}\NormalTok{ból}\OperatorTok{,}\NormalTok{ az eredményeket pedig közvetlenül a BigQuery adattárházba tudja írni}\OperatorTok{).} \FunctionTok{Ez}\NormalTok{ a szolgáltatás mentesíti az IT mérnököket az üzemeltetési terhek alól}\OperatorTok{,}\NormalTok{ lehetővé téve számukra}\OperatorTok{,}\NormalTok{ hogy kizárólag a bonyolult adatfeldolgozási algoritmusok megtervezésére összpontosítsanak}\OperatorTok{.}
+\FunctionTok{A}\NormalTok{ Cloud Dataflow tökéletes integrációt kínál a GCP többi }\FunctionTok{adatszolgáltatásával} \OperatorTok{(}\NormalTok{például adatokat képes olvasni a Cloud Storage}\OperatorTok{{-}}\NormalTok{ból vagy a Pub}\OperatorTok{/}\NormalTok{Sub}\OperatorTok{{-}}\NormalTok{ból}\OperatorTok{,}\NormalTok{ az eredményeket pedig közvetlenül a BigQuery adattárházba tudja írni}\OperatorTok{).} \FunctionTok{Ez}\NormalTok{ a szolgáltatás mentesíti az IT mérnököket az üzemeltetési terhek alól}\OperatorTok{,}\NormalTok{ lehetővé téve számukra}\OperatorTok{,}\NormalTok{ hogy kizárólag a bonyolult adatfeldolgozási algoritmusok megtervezésére összpontosítsanak}\OperatorTok{.} \FunctionTok{Az}\NormalTok{ egyes keretrendszerek jellemzőit összefoglaló táblázat a }\DecValTok{8}\OperatorTok{{-}}\FloatTok{15.}\NormalTok{ ábrán látható}\OperatorTok{.} \FunctionTok{A}\NormalTok{ Beam rendszer ebben az összehasonlításban nem szerepel}\OperatorTok{.}
 
 \OperatorTok{![}\DecValTok{8}\OperatorTok{{-}}\FloatTok{15.}\NormalTok{ ábra}\OperatorTok{](\textless{}../}\NormalTok{Cloud Programming\_MSc\_Juhasz\_IId}\OperatorTok{{-}}\FloatTok{90\_1.}\NormalTok{png}\OperatorTok{\textgreater{})}
 
@@ -4702,42 +4790,73 @@ A függvény forráskódja alább látható. Kap egy üzenetet a Pub/Sub-tól,
 kinyeri annak tartalmát, és beilleszti a ``Hello \ldots{}'' kimeneti
 szövegbe, ezzel személyre szabott köszöntést generálva.
 
-Java import com.google.cloud.functions.BackgroundFunction; import
-com.google.cloud.functions.Context; import
-functions.eventpojos.PubSubMessage; import
-java.nio.charset.StandardCharsets; import java.util.Base64; import
-java.util.logging.Level; import java.util.logging.Logger;
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{functions}\OperatorTok{.}\ImportTok{BackgroundFunction}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{functions}\OperatorTok{.}\ImportTok{Context}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{functions}\OperatorTok{.}\ImportTok{eventpojos}\OperatorTok{.}\ImportTok{PubSubMessage}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{nio}\OperatorTok{.}\ImportTok{charset}\OperatorTok{.}\ImportTok{StandardCharsets}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{Base64}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{logging}\OperatorTok{.}\ImportTok{Level}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{logging}\OperatorTok{.}\ImportTok{Logger}\OperatorTok{;}
 
-public class HelloPubSub implements BackgroundFunction \{ private static
-final Logger logger = Logger.getLogger(HelloPubSub.class.getName());
+\KeywordTok{public} \KeywordTok{class}\NormalTok{ HelloPubSub }\KeywordTok{implements}\NormalTok{ BackgroundFunction}\OperatorTok{\textless{}}\NormalTok{PubSubMessage}\OperatorTok{\textgreater{}} \OperatorTok{\{}
+  \KeywordTok{private} \DataTypeTok{static} \DataTypeTok{final} \BuiltInTok{Logger}\NormalTok{ logger }\OperatorTok{=} \BuiltInTok{Logger}\OperatorTok{.}\FunctionTok{getLogger}\OperatorTok{(}\NormalTok{HelloPubSub}\OperatorTok{.}\FunctionTok{class}\OperatorTok{.}\FunctionTok{getName}\OperatorTok{());}
 
-@Override public void accept(PubSubMessage message, Context context) \{
-String name = ``world''; if (message != null \&\& message.getData() !=
-null) \{ name = new String(
-Base64.getDecoder().decode(message.getData().getBytes(StandardCharsets.UTF\_8)),
-StandardCharsets.UTF\_8); \} logger.info(String.format(``Hello \%s!'',
-name)); return; \} \} Amint a kód elkészült, a függvényt a felhőbe
-telepítjük az alábbi gcloud parancs segítségével. A témakör neve ebben a
-példában SAMPLE\_TOPIC. Ezt a deploy parancsban a --trigger-topic
-opcióval adjuk meg, amely létrehozza a kapcsolatot (feliratkozást) a
-megadott témakörhöz.
+  \AttributeTok{@Override}
+  \KeywordTok{public} \DataTypeTok{void} \FunctionTok{accept}\OperatorTok{(}\NormalTok{PubSubMessage message}\OperatorTok{,} \BuiltInTok{Context}\NormalTok{ context}\OperatorTok{)} \OperatorTok{\{}
+    \BuiltInTok{String}\NormalTok{ name }\OperatorTok{=} \StringTok{"world"}\OperatorTok{;}
+    \ControlFlowTok{if} \OperatorTok{(}\NormalTok{message }\OperatorTok{!=} \KeywordTok{null} \OperatorTok{\&\&}\NormalTok{ message}\OperatorTok{.}\FunctionTok{getData}\OperatorTok{()} \OperatorTok{!=} \KeywordTok{null}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{      name }\OperatorTok{=} \KeywordTok{new} \BuiltInTok{String}\OperatorTok{(}
+\NormalTok{        Base64}\OperatorTok{.}\FunctionTok{getDecoder}\OperatorTok{().}\FunctionTok{decode}\OperatorTok{(}\NormalTok{message}\OperatorTok{.}\FunctionTok{getData}\OperatorTok{().}\FunctionTok{getBytes}\OperatorTok{(}\NormalTok{StandardCharsets}\OperatorTok{.}\FunctionTok{UTF\_8}\OperatorTok{)),}
+\NormalTok{        StandardCharsets}\OperatorTok{.}\FunctionTok{UTF\_8}\OperatorTok{);}
+    \OperatorTok{\}}
+\NormalTok{    logger}\OperatorTok{.}\FunctionTok{info}\OperatorTok{(}\BuiltInTok{String}\OperatorTok{.}\FunctionTok{format}\OperatorTok{(}\StringTok{"Hello }\SpecialCharTok{\%s}\StringTok{!"}\OperatorTok{,}\NormalTok{ name}\OperatorTok{));}
+    \ControlFlowTok{return}\OperatorTok{;}
+  \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
-Bash gcloud functions deploy java-pubsub-function\\
---entry-point functions.HelloPubSub\\
---runtime java11\\
---memory 512MB\\
---trigger-topic SAMPLE\_TOPIC A függvény telepítése után létrehozzuk
-magát a témakört is az alábbi paranccsal:
+Amint a kód elkészült, a függvényt a felhőbe telepítjük az alábbi gcloud
+parancs segítségével. A témakör neve ebben a példában SAMPLE\_TOPIC. Ezt
+a deploy parancsban a --trigger-topic opcióval adjuk meg, amely
+létrehozza a kapcsolatot (feliratkozást) a megadott témakörhöz.
 
-Bash gcloud pubsub topics create SAMPLE\_TOPIC Végül teszteljük a
-példánk működését úgy, hogy egy ``Einstein'' tartalmú tesztüzenetet
-küldünk a SAMPLE\_TOPIC-ra. Az egyszerűség kedvéért az üzenet
-generálására is a gcloud parancsot használjuk. (A következő alfejezetben
-megvizsgáljuk, hogyan küldhetünk és fogadhatunk üzeneteket közvetlenül
-az alkalmazáskódból.)
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gcloud}\NormalTok{ functions deploy java{-}pubsub{-}function }\DataTypeTok{\textbackslash{}}
+\NormalTok{{-}{-}entry{-}point functions.HelloPubSub }\DataTypeTok{\textbackslash{}}
+\NormalTok{{-}{-}runtime java11 }\DataTypeTok{\textbackslash{}}
+\NormalTok{{-}{-}memory 512MB }\DataTypeTok{\textbackslash{}}
+\NormalTok{{-}{-}trigger{-}topic SAMPLE\_TOPIC}
+\end{Highlighting}
+\end{Shaded}
 
-Bash gcloud pubsub topics publish SAMPLE\_TOPIC --message Einstein
-\#\#\# 10.4 Üzenetek közzététele és fogadása kódból
+A függvény telepítése után létrehozzuk magát a témakört is az alábbi
+paranccsal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gcloud}\NormalTok{ pubsub topics create SAMPLE\_TOPIC}
+\end{Highlighting}
+\end{Shaded}
+
+Végül teszteljük a példánk működését úgy, hogy egy ``Einstein'' tartalmú
+tesztüzenetet küldünk a SAMPLE\_TOPIC-ra. Az egyszerűség kedvéért az
+üzenet generálására is a gcloud parancsot használjuk. (A következő
+alfejezetben megvizsgáljuk, hogyan küldhetünk és fogadhatunk üzeneteket
+közvetlenül az alkalmazáskódból.)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gcloud}\NormalTok{ pubsub topics publish SAMPLE\_TOPIC }\AttributeTok{{-}{-}message}\NormalTok{ Einstein}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{uxfczenetek-kuxf6zzuxe9tuxe9tele-uxe9s-fogaduxe1sa-kuxf3dbuxf3l}{%
+\subsubsection{10.4 Üzenetek közzététele és fogadása
+kódból}\label{uxfczenetek-kuxf6zzuxe9tuxe9tele-uxe9s-fogaduxe1sa-kuxf3dbuxf3l}}
 
 Most megvizsgáljuk, hogyan lehet Java kódból üzeneteket közzétenni és
 fogadni a Pub/Sub API használatával. Az első kódrészlet egy üzenet
@@ -4754,82 +4873,86 @@ felszabadításával (shutdown) fejeződik be.
 
 Pub/Sub üzenet közzététele (Publishing)
 
-Java import com.google.api.core.ApiFuture; import
-com.google.api.core.ApiFutureCallback; import
-com.google.api.core.ApiFutures; import
-com.google.api.gax.rpc.ApiException; import
-com.google.cloud.pubsub.v1.Publisher; import
-com.google.common.util.concurrent.MoreExecutors; import
-com.google.protobuf.ByteString; import
-com.google.pubsub.v1.PubsubMessage; import
-com.google.pubsub.v1.TopicName; import java.io.IOException; import
-java.util.Arrays; import java.util.List; import
-java.util.concurrent.TimeUnit;
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{api}\OperatorTok{.}\ImportTok{core}\OperatorTok{.}\ImportTok{ApiFuture}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{api}\OperatorTok{.}\ImportTok{core}\OperatorTok{.}\ImportTok{ApiFutureCallback}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{api}\OperatorTok{.}\ImportTok{core}\OperatorTok{.}\ImportTok{ApiFutures}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{api}\OperatorTok{.}\ImportTok{gax}\OperatorTok{.}\ImportTok{rpc}\OperatorTok{.}\ImportTok{ApiException}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{pubsub}\OperatorTok{.}\ImportTok{v1}\OperatorTok{.}\ImportTok{Publisher}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{common}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{concurrent}\OperatorTok{.}\ImportTok{MoreExecutors}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{protobuf}\OperatorTok{.}\ImportTok{ByteString}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{pubsub}\OperatorTok{.}\ImportTok{v1}\OperatorTok{.}\ImportTok{PubsubMessage}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{pubsub}\OperatorTok{.}\ImportTok{v1}\OperatorTok{.}\ImportTok{TopicName}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{io}\OperatorTok{.}\ImportTok{IOException}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{Arrays}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{List}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{concurrent}\OperatorTok{.}\ImportTok{TimeUnit}\OperatorTok{;}
 
-public class PublishWithErrorHandlerExample \{
+\KeywordTok{public} \KeywordTok{class}\NormalTok{ PublishWithErrorHandlerExample }\OperatorTok{\{}
 
-public static void main(String\ldots{} args) throws Exception \{ //
-TODO(developer): Futtatás előtt cserélje ki ezeket a változókat! String
-projectId = ``your-project-id''; String topicId = ``your-topic-id'';
+  \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{main}\OperatorTok{(}\BuiltInTok{String}\KeywordTok{...}\NormalTok{ args}\OperatorTok{)} \KeywordTok{throws} \BuiltInTok{Exception} \OperatorTok{\{}
+    \CommentTok{// }\AlertTok{TODO}\CommentTok{(developer): Futtatás előtt cserélje ki ezeket a változókat!}
+    \BuiltInTok{String}\NormalTok{ projectId }\OperatorTok{=} \StringTok{"your{-}project{-}id"}\OperatorTok{;}
+    \BuiltInTok{String}\NormalTok{ topicId }\OperatorTok{=} \StringTok{"your{-}topic{-}id"}\OperatorTok{;}
 
-\begin{verbatim}
-publishWithErrorHandlerExample(projectId, topicId);
-\end{verbatim}
+    \FunctionTok{publishWithErrorHandlerExample}\OperatorTok{(}\NormalTok{projectId}\OperatorTok{,}\NormalTok{ topicId}\OperatorTok{);}
+  \OperatorTok{\}}
 
-\}
+  \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{publishWithErrorHandlerExample}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ projectId}\OperatorTok{,} \BuiltInTok{String}\NormalTok{ topicId}\OperatorTok{)}
+      \KeywordTok{throws} \BuiltInTok{IOException}\OperatorTok{,} \BuiltInTok{InterruptedException} \OperatorTok{\{}
+\NormalTok{    TopicName topicName }\OperatorTok{=}\NormalTok{ TopicName}\OperatorTok{.}\FunctionTok{of}\OperatorTok{(}\NormalTok{projectId}\OperatorTok{,}\NormalTok{ topicId}\OperatorTok{);}
+\NormalTok{    Publisher publisher }\OperatorTok{=} \KeywordTok{null}\OperatorTok{;}
 
-public static void publishWithErrorHandlerExample(String projectId,
-String topicId) throws IOException, InterruptedException \{ TopicName
-topicName = TopicName.of(projectId, topicId); Publisher publisher =
-null;
+    \ControlFlowTok{try} \OperatorTok{\{}
+      \CommentTok{// Publisher példány létrehozása az alapértelmezett beállításokkal, a témához kötve}
+\NormalTok{      publisher }\OperatorTok{=}\NormalTok{ Publisher}\OperatorTok{.}\FunctionTok{newBuilder}\OperatorTok{(}\NormalTok{topicName}\OperatorTok{).}\FunctionTok{build}\OperatorTok{();}
 
-\begin{verbatim}
-try {
-  // Publisher példány létrehozása az alapértelmezett beállításokkal, a témához kötve
-  publisher = Publisher.newBuilder(topicName).build();
+      \BuiltInTok{List}\OperatorTok{\textless{}}\BuiltInTok{String}\OperatorTok{\textgreater{}}\NormalTok{ messages }\OperatorTok{=} \BuiltInTok{Arrays}\OperatorTok{.}\FunctionTok{asList}\OperatorTok{(}\StringTok{"first message"}\OperatorTok{,} \StringTok{"second message"}\OperatorTok{);}
 
-  List<String> messages = Arrays.asList("first message", "second message");
+      \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{final} \BuiltInTok{String}\NormalTok{ message }\OperatorTok{:}\NormalTok{ messages}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        ByteString data }\OperatorTok{=}\NormalTok{ ByteString}\OperatorTok{.}\FunctionTok{copyFromUtf8}\OperatorTok{(}\NormalTok{message}\OperatorTok{);}
+\NormalTok{        PubsubMessage pubsubMessage }\OperatorTok{=}\NormalTok{ PubsubMessage}\OperatorTok{.}\FunctionTok{newBuilder}\OperatorTok{().}\FunctionTok{setData}\OperatorTok{(}\NormalTok{data}\OperatorTok{).}\FunctionTok{build}\OperatorTok{();}
 
-  for (final String message : messages) {
-    ByteString data = ByteString.copyFromUtf8(message);
-    PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
+        \CommentTok{// Közzététel után egy szerver által kiosztott (témán belül egyedi) üzenetazonosítót ad vissza}
+\NormalTok{        ApiFuture}\OperatorTok{\textless{}}\BuiltInTok{String}\OperatorTok{\textgreater{}}\NormalTok{ future }\OperatorTok{=}\NormalTok{ publisher}\OperatorTok{.}\FunctionTok{publish}\OperatorTok{(}\NormalTok{pubsubMessage}\OperatorTok{);}
 
-    // Közzététel után egy szerver által kiosztott (témán belül egyedi) üzenetazonosítót ad vissza
-    ApiFuture<String> future = publisher.publish(pubsubMessage);
+        \CommentTok{// Aszinkron visszahívás (callback) hozzáadása a siker/hiba kezelésére}
+\NormalTok{        ApiFutures}\OperatorTok{.}\FunctionTok{addCallback}\OperatorTok{(}
+\NormalTok{            future}\OperatorTok{,}
+            \KeywordTok{new}\NormalTok{ ApiFutureCallback}\OperatorTok{\textless{}}\BuiltInTok{String}\OperatorTok{\textgreater{}()} \OperatorTok{\{}
 
-    // Aszinkron visszahívás (callback) hozzáadása a siker/hiba kezelésére
-    ApiFutures.addCallback(
-        future,
-        new ApiFutureCallback<String>() {
+              \AttributeTok{@Override}
+              \KeywordTok{public} \DataTypeTok{void} \FunctionTok{onFailure}\OperatorTok{(}\BuiltInTok{Throwable}\NormalTok{ throwable}\OperatorTok{)} \OperatorTok{\{}
+                \ControlFlowTok{if} \OperatorTok{(}\NormalTok{throwable }\KeywordTok{instanceof}\NormalTok{ ApiException}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{                  ApiException apiException }\OperatorTok{=} \OperatorTok{((}\NormalTok{ApiException}\OperatorTok{)}\NormalTok{ throwable}\OperatorTok{);}
+                  \CommentTok{// Részletek az API kivételről}
+                  \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\NormalTok{apiException}\OperatorTok{.}\FunctionTok{getStatusCode}\OperatorTok{().}\FunctionTok{getCode}\OperatorTok{());}
+                  \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\NormalTok{apiException}\OperatorTok{.}\FunctionTok{isRetryable}\OperatorTok{());}
+                \OperatorTok{\}}
+                \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Error publishing message : "} \OperatorTok{+}\NormalTok{ message}\OperatorTok{);}
+              \OperatorTok{\}}
 
-          @Override
-          public void onFailure(Throwable throwable) {
-            if (throwable instanceof ApiException) {
-              ApiException apiException = ((ApiException) throwable);
-              // Részletek az API kivételről
-              System.out.println(apiException.getStatusCode().getCode());
-              System.out.println(apiException.isRetryable());
-            }
-            System.out.println("Error publishing message : " + message);
-          }
+              \AttributeTok{@Override}
+              \KeywordTok{public} \DataTypeTok{void} \FunctionTok{onSuccess}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ messageId}\OperatorTok{)} \OperatorTok{\{}
+                \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Published message ID: "} \OperatorTok{+}\NormalTok{ messageId}\OperatorTok{);}
+              \OperatorTok{\}}
+            \OperatorTok{\},}
+\NormalTok{            MoreExecutors}\OperatorTok{.}\FunctionTok{directExecutor}\OperatorTok{());}
+      \OperatorTok{\}}
+    \OperatorTok{\}} \ControlFlowTok{finally} \OperatorTok{\{}
+      \ControlFlowTok{if} \OperatorTok{(}\NormalTok{publisher }\OperatorTok{!=} \KeywordTok{null}\OperatorTok{)} \OperatorTok{\{}
+        \CommentTok{// Ha befejeztük, állítsuk le a publishert az erőforrások felszabadítása érdekében}
+\NormalTok{        publisher}\OperatorTok{.}\FunctionTok{shutdown}\OperatorTok{();}
+\NormalTok{        publisher}\OperatorTok{.}\FunctionTok{awaitTermination}\OperatorTok{(}\DecValTok{1}\OperatorTok{,} \BuiltInTok{TimeUnit}\OperatorTok{.}\FunctionTok{MINUTES}\OperatorTok{);}
+      \OperatorTok{\}}
+    \OperatorTok{\}}
+  \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
-          @Override
-          public void onSuccess(String messageId) {
-            System.out.println("Published message ID: " + messageId);
-          }
-        },
-        MoreExecutors.directExecutor());
-  }
-} finally {
-  if (publisher != null) {
-    // Ha befejeztük, állítsuk le a publishert az erőforrások felszabadítása érdekében
-    publisher.shutdown();
-    publisher.awaitTermination(1, TimeUnit.MINUTES);
-  }
-}
-\end{verbatim}
-
-\} \} A második minta azt illusztrálja, hogyan lehet egy alkalmazásban
+A második minta azt illusztrálja, hogyan lehet egy alkalmazásban
 üzenetet fogadni. A Pub/Sub-ban kétféle üzenetkézbesítési mód létezik:
 Lekéréses (Pull) és Leküldéses (Push) kézbesítés. A lekéréses kézbesítés
 során a feliratkozónak explicit módon kell kérnie (le kell húznia) az
@@ -4866,54 +4989,54 @@ hívással nyugtázzuk a sikeres kézbesítést.
 
 Pub/Sub üzenet fogadása (Receiving)
 
-Java import com.google.cloud.pubsub.v1.AckReplyConsumer; import
-com.google.cloud.pubsub.v1.MessageReceiver; import
-com.google.cloud.pubsub.v1.Subscriber; import
-com.google.pubsub.v1.ProjectSubscriptionName; import
-com.google.pubsub.v1.PubsubMessage; import
-java.util.concurrent.TimeUnit; import
-java.util.concurrent.TimeoutException;
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{pubsub}\OperatorTok{.}\ImportTok{v1}\OperatorTok{.}\ImportTok{AckReplyConsumer}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{pubsub}\OperatorTok{.}\ImportTok{v1}\OperatorTok{.}\ImportTok{MessageReceiver}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{pubsub}\OperatorTok{.}\ImportTok{v1}\OperatorTok{.}\ImportTok{Subscriber}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{pubsub}\OperatorTok{.}\ImportTok{v1}\OperatorTok{.}\ImportTok{ProjectSubscriptionName}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{pubsub}\OperatorTok{.}\ImportTok{v1}\OperatorTok{.}\ImportTok{PubsubMessage}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{concurrent}\OperatorTok{.}\ImportTok{TimeUnit}\OperatorTok{;}
+\KeywordTok{import} \ImportTok{java}\OperatorTok{.}\ImportTok{util}\OperatorTok{.}\ImportTok{concurrent}\OperatorTok{.}\ImportTok{TimeoutException}\OperatorTok{;}
 
-public class SubscribeAsyncExample \{ public static void
-main(String\ldots{} args) throws Exception \{ // TODO(developer):
-Futtatás előtt cserélje ki ezeket a változókat! String projectId =
-``your-project-id''; String subscriptionId = ``your-subscription-id'';
+\KeywordTok{public} \KeywordTok{class}\NormalTok{ SubscribeAsyncExample }\OperatorTok{\{}
+  \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{main}\OperatorTok{(}\BuiltInTok{String}\KeywordTok{...}\NormalTok{ args}\OperatorTok{)} \KeywordTok{throws} \BuiltInTok{Exception} \OperatorTok{\{}
+    \CommentTok{// }\AlertTok{TODO}\CommentTok{(developer): Futtatás előtt cserélje ki ezeket a változókat!}
+    \BuiltInTok{String}\NormalTok{ projectId }\OperatorTok{=} \StringTok{"your{-}project{-}id"}\OperatorTok{;}
+    \BuiltInTok{String}\NormalTok{ subscriptionId }\OperatorTok{=} \StringTok{"your{-}subscription{-}id"}\OperatorTok{;}
 
-\begin{verbatim}
-subscribeAsyncExample(projectId, subscriptionId);
-\end{verbatim}
+    \FunctionTok{subscribeAsyncExample}\OperatorTok{(}\NormalTok{projectId}\OperatorTok{,}\NormalTok{ subscriptionId}\OperatorTok{);}
+  \OperatorTok{\}}
 
-\}
+  \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{subscribeAsyncExample}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ projectId}\OperatorTok{,} \BuiltInTok{String}\NormalTok{ subscriptionId}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    ProjectSubscriptionName subscriptionName }\OperatorTok{=}
+\NormalTok{        ProjectSubscriptionName}\OperatorTok{.}\FunctionTok{of}\OperatorTok{(}\NormalTok{projectId}\OperatorTok{,}\NormalTok{ subscriptionId}\OperatorTok{);}
 
-public static void subscribeAsyncExample(String projectId, String
-subscriptionId) \{ ProjectSubscriptionName subscriptionName =
-ProjectSubscriptionName.of(projectId, subscriptionId);
+    \CommentTok{// Aszinkron üzenetfogadó (MessageReceiver) példányosítása}
+\NormalTok{    MessageReceiver receiver }\OperatorTok{=}
+        \OperatorTok{(}\NormalTok{PubsubMessage message}\OperatorTok{,}\NormalTok{ AckReplyConsumer consumer}\OperatorTok{)} \OperatorTok{{-}\textgreater{}} \OperatorTok{\{}
+          \CommentTok{// A bejövő üzenet kezelése, majd a kézbesítés nyugtázása (ack)}
+          \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Id: "} \OperatorTok{+}\NormalTok{ message}\OperatorTok{.}\FunctionTok{getMessageId}\OperatorTok{());}
+          \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Data: "} \OperatorTok{+}\NormalTok{ message}\OperatorTok{.}\FunctionTok{getData}\OperatorTok{().}\FunctionTok{toStringUtf8}\OperatorTok{());}
+\NormalTok{          consumer}\OperatorTok{.}\FunctionTok{ack}\OperatorTok{();}
+        \OperatorTok{\};}
 
-\begin{verbatim}
-// Aszinkron üzenetfogadó (MessageReceiver) példányosítása
-MessageReceiver receiver =
-    (PubsubMessage message, AckReplyConsumer consumer) -> {
-      // A bejövő üzenet kezelése, majd a kézbesítés nyugtázása (ack)
-      System.out.println("Id: " + message.getMessageId());
-      System.out.println("Data: " + message.getData().toStringUtf8());
-      consumer.ack();
-    };
-
-Subscriber subscriber = null;
-try {
-  subscriber = Subscriber.newBuilder(subscriptionName, receiver).build();
-  // A feliratkozó (subscriber) elindítása
-  subscriber.startAsync().awaitRunning();
-  System.out.printf("Listening for messages on %s:\n", subscriptionName.toString());
-  // Engedjük futni a feliratkozót 30 másodpercig, hacsak nem történik helyrehozhatatlan hiba
-  subscriber.awaitTerminated(30, TimeUnit.SECONDS);
-} catch (TimeoutException timeoutException) {
-  // 30 másodperc után állítsuk le a feliratkozót, az üzenetek fogadása befejeződik
-  subscriber.stopAsync();
-}
-\end{verbatim}
-
-\} \}
+\NormalTok{    Subscriber subscriber }\OperatorTok{=} \KeywordTok{null}\OperatorTok{;}
+    \ControlFlowTok{try} \OperatorTok{\{}
+\NormalTok{      subscriber }\OperatorTok{=}\NormalTok{ Subscriber}\OperatorTok{.}\FunctionTok{newBuilder}\OperatorTok{(}\NormalTok{subscriptionName}\OperatorTok{,}\NormalTok{ receiver}\OperatorTok{).}\FunctionTok{build}\OperatorTok{();}
+      \CommentTok{// A feliratkozó (subscriber) elindítása}
+\NormalTok{      subscriber}\OperatorTok{.}\FunctionTok{startAsync}\OperatorTok{().}\FunctionTok{awaitRunning}\OperatorTok{();}
+      \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}\StringTok{"Listening for messages on }\SpecialCharTok{\%s}\StringTok{:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{,}\NormalTok{ subscriptionName}\OperatorTok{.}\FunctionTok{toString}\OperatorTok{());}
+      \CommentTok{// Engedjük futni a feliratkozót 30 másodpercig, hacsak nem történik helyrehozhatatlan hiba}
+\NormalTok{      subscriber}\OperatorTok{.}\FunctionTok{awaitTerminated}\OperatorTok{(}\DecValTok{30}\OperatorTok{,} \BuiltInTok{TimeUnit}\OperatorTok{.}\FunctionTok{SECONDS}\OperatorTok{);}
+    \OperatorTok{\}} \ControlFlowTok{catch} \OperatorTok{(}\BuiltInTok{TimeoutException}\NormalTok{ timeoutException}\OperatorTok{)} \OperatorTok{\{}
+      \CommentTok{// 30 másodperc után állítsuk le a feliratkozót, az üzenetek fogadása befejeződik}
+\NormalTok{      subscriber}\OperatorTok{.}\FunctionTok{stopAsync}\OperatorTok{();}
+    \OperatorTok{\}}
+  \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -5003,14 +5126,18 @@ követően a tényleges felismerést a batchAnnotateImages() metódussal
 indíthatjuk el. A válaszként kapott objektum tartalmazza a detektált
 elemek listáját, amelyeket egyenként dolgozhatunk fel.
 
-Java // A kliens inicializálása, amely a kérések küldéséért felel. //
-Ezt az objektumot érdemes újrahasznosítani több kérés esetén is. try
-(ImageAnnotatorClient client = ImageAnnotatorClient.create()) \{
-BatchAnnotateImagesResponse response =
-client.batchAnnotateImages(requests); List responses =
-response.getResponsesList();
-
-// A válaszok feldolgozása\ldots{} \}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// A kliens inicializálása, amely a kérések küldéséért felel.}
+\CommentTok{// Ezt az objektumot érdemes újrahasznosítani több kérés esetén is.}
+\ControlFlowTok{try} \OperatorTok{(}\NormalTok{ImageAnnotatorClient client }\OperatorTok{=}\NormalTok{ ImageAnnotatorClient}\OperatorTok{.}\FunctionTok{create}\OperatorTok{())} \OperatorTok{\{}
+\NormalTok{   BatchAnnotateImagesResponse response }\OperatorTok{=}\NormalTok{ client}\OperatorTok{.}\FunctionTok{batchAnnotateImages}\OperatorTok{(}\NormalTok{requests}\OperatorTok{);}
+   \BuiltInTok{List}\OperatorTok{\textless{}}\NormalTok{AnnotateImageResponse}\OperatorTok{\textgreater{}}\NormalTok{ responses }\OperatorTok{=}\NormalTok{ response}\OperatorTok{.}\FunctionTok{getResponsesList}\OperatorTok{();}
+   
+   \CommentTok{// A válaszok feldolgozása...}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 A batchAnnotateImages() metódus bemenetként egy List típusú listát vár.
 Ebben a listában kell elhelyezni azokat a kéréseket, amelyek
@@ -5018,12 +5145,16 @@ meghatározzák, hogy milyen jellemzőket (features) szeretnénk keresni a
 képeken. A jellemzők típusát a Feature osztály definiálja (pl.
 TEXT\_DETECTION).
 
-Java List requests = new ArrayList\textless\textgreater(); //
-Szövegfelismerés (TEXT\_DETECTION) típusú jellemző kérése Feature feat =
-Feature.newBuilder().setType(Feature.Type.TEXT\_DETECTION).build();
-AnnotateImageRequest request =
-AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).build();
-requests.add(request);
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{List}\OperatorTok{\textless{}}\NormalTok{AnnotateImageRequest}\OperatorTok{\textgreater{}}\NormalTok{ requests }\OperatorTok{=} \KeywordTok{new} \BuiltInTok{ArrayList}\OperatorTok{\textless{}\textgreater{}();}
+\CommentTok{// Szövegfelismerés (TEXT\_DETECTION) típusú jellemző kérése}
+\NormalTok{Feature feat }\OperatorTok{=}\NormalTok{ Feature}\OperatorTok{.}\FunctionTok{newBuilder}\OperatorTok{().}\FunctionTok{setType}\OperatorTok{(}\NormalTok{Feature}\OperatorTok{.}\FunctionTok{Type}\OperatorTok{.}\FunctionTok{TEXT\_DETECTION}\OperatorTok{).}\FunctionTok{build}\OperatorTok{();}
+\NormalTok{AnnotateImageRequest request }\OperatorTok{=}
+\NormalTok{        AnnotateImageRequest}\OperatorTok{.}\FunctionTok{newBuilder}\OperatorTok{().}\FunctionTok{addFeatures}\OperatorTok{(}\NormalTok{feat}\OperatorTok{).}\FunctionTok{setImage}\OperatorTok{(}\NormalTok{img}\OperatorTok{).}\FunctionTok{build}\OperatorTok{();}
+\NormalTok{requests}\OperatorTok{.}\FunctionTok{add}\OperatorTok{(}\NormalTok{request}\OperatorTok{);}
+\end{Highlighting}
+\end{Shaded}
 
 A rendszer számos egyéb detektálási módot is támogat, mint például:
 FACE\_DETECTION (arcfelismerés), LANDMARK\_DETECTION (nevezetességek),
@@ -5081,13 +5212,16 @@ Az alábbi példában a TranslateOptions osztály segítségével kérünk le eg
 alapértelmezett fordító szolgáltatást, majd a translate() metódussal
 elvégezzük a fordítást.
 
-Java import com.google.cloud.translate.*; Translate translate =
-TranslateOptions.getDefaultInstance().getService();
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{import} \ImportTok{com}\OperatorTok{.}\ImportTok{google}\OperatorTok{.}\ImportTok{cloud}\OperatorTok{.}\ImportTok{translate}\OperatorTok{.*;}
+\NormalTok{Translate translate }\OperatorTok{=}\NormalTok{ TranslateOptions}\OperatorTok{.}\FunctionTok{getDefaultInstance}\OperatorTok{().}\FunctionTok{getService}\OperatorTok{();}
 
-// Spanyol szöveg fordítása (a forrásnyelv felismerése automatikus)
-Translation translation = translate.translate(``¡Hola Mundo!'');
-System.out.printf(``Lefordított
-szöveg:\n\t%s\n", translation.getTranslatedText());
+\CommentTok{// Spanyol szöveg fordítása (a forrásnyelv felismerése automatikus)}
+\NormalTok{Translation translation }\OperatorTok{=}\NormalTok{ translate}\OperatorTok{.}\FunctionTok{translate}\OperatorTok{(}\StringTok{"¡Hola Mundo!"}\OperatorTok{);}
+\BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{printf}\OperatorTok{(}\StringTok{"Lefordított szöveg:}\SpecialCharTok{\textbackslash{}n\textbackslash{}t\%s\textbackslash{}n}\StringTok{"}\OperatorTok{,}\NormalTok{ translation}\OperatorTok{.}\FunctionTok{getTranslatedText}\OperatorTok{());}
+\end{Highlighting}
+\end{Shaded}
 
 A fordítás paraméterezhető is: explicit módon megadhatjuk a forrás- és a
 célnyelvet (például spanyolról németre), valamint kiválaszthatjuk a

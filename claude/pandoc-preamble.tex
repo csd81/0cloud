@@ -1,0 +1,62 @@
+% --- Disable hyphenation: keep whole words ---
+\usepackage[none]{hyphenat}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=2000
+\emergencystretch=\maxdimen
+\hbadness=10000
+\sloppy
+
+% --- Force figures to appear exactly where written (no floating) ---
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{caption}
+\captionsetup{justification=centering,singlelinecheck=false}
+% Suppress LaTeX's auto "Figure N:" label — use only the chapter-based
+% numbering already baked into the alt text (e.g. "7-8. ábra: …").
+\captionsetup[figure]{labelformat=empty}
+
+% Scale images to 80% of line width
+\usepackage{graphicx}
+\setkeys{Gin}{width=0.8\linewidth,keepaspectratio}
+
+% --- Make \paragraph and \subparagraph display as block headings on their own line
+\usepackage{titlesec}
+\titleformat{\paragraph}[block]
+  {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\subparagraph}[block]
+  {\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% --- Start each chapter (## heading) on a new page
+% Pandoc's --top-level-division=default maps:
+%   # → \section, ## → \subsection, ### → \subsubsection
+% Since our book title is a single H1 and chapters are H2, chapters land on \subsection.
+\usepackage{etoolbox}
+\pretocmd{\subsection}{\clearpage}{}{}
+
+% --- Framed, light-grey-background code blocks ---
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{needspace}
+\usepackage{fvextra}
+
+% Let Verbatim (which backs Highlighting) wrap long lines so AWS CLI / URLs
+% no longer overflow into the margin. Options must stay on one logical line.
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},breaklines=true,breakanywhere=true,breakindent=1em,breaksymbolleft=\small\ensuremath{\hookrightarrow},fontsize=\small}
+
+% If a code block can't fit at least 6 lines on the current page, start it
+% on the next one. Prevents orphaned code-block openings at page bottoms.
+\BeforeBeginEnvironment{Shaded}{\needspace{6\baselineskip}}
+
+\surroundwithmdframed[
+  linewidth=0.5pt,
+  linecolor=black!40,
+  backgroundcolor=black!3,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  skipabove=4pt,
+  skipbelow=4pt
+]{Shaded}

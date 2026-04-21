@@ -187,8 +187,6 @@ return 0;
 }
 ```
 
-^5 https://www.programminglogic.com/example-of-client-server-program-in-c-using-sockets-and-tcp/
-
 Ugyanez a funkcionalitás Java nyelven a következőképpen néz ki.
 
 ```java
@@ -264,8 +262,6 @@ if (result == NULL) {
 }
 ```
 
-
-^6 https://www.cprogramming.com/tutorial/rpc/remote_procedure_call_start.html
 
 #### 2.2.2 Távoli metódushívás
 
@@ -392,8 +388,6 @@ A Representational State Transfer, röviden REST, Roy Fielding 2000-ben készül
 
 A REST-alapú, vagyis RESTful szolgáltatások egyszerűsége miatt ez a megközelítés nagyon gyorsan népszerűvé vált, és komoly véleményütközést okozott a webszolgáltatási közösségen belül. Mára azonban úgy tűnik, hogy a REST egyértelműen győzött, és az XML-alapú webszolgáltatásokat új rendszerek fejlesztésénél már csak kivételes esetekben használják. A REST részletei megtalálhatók Fielding doktori értekezésében,^7 illetve a következő Wikipedia-bejegyzésben: https://en.wikipedia.org/wiki/Representational_state_transfer.
 
-^7 https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
-
 ### 2.4 Grid számítás
 
 A grid számítás az 1990-es évek végén két egymástól független, de egy időben kibontakozó fejlődési irány eredményeként jelent meg. Az Egyesült Államok szuperszámítógépei elszigetelten működtek, ami jelentős regionális különbségeket okozott a terhelésükben. Előfordult, hogy egy szuperszámítógép-központ túlterheltté vált, ezért a felhasználói feladatok várakoztak a sorban, miközben egy másik központ ugyanebben az időben alulhasznosított maradt. A kutatók azt javasolták, hogy e központok összekapcsolásával, valamint a feladatok automatikus, a legalkalmasabb helyre történő továbbításával növelhető a szuperszámítógép-központok hatékonysága és kihasználtsága, miközben a felhasználók várakozási ideje is csökken.
@@ -424,11 +418,7 @@ Az ilyen rendszerek első és legismertebb példája a SETI@home projekt. A proj
 
 *2-18. ábra. A SETI@home rendszer architektúrája*
 
-^8 https://setiathome.berkeley.edu/sah_papers/cacm.php
-
 A projekt sikere egy új alprojekt elindításához is vezetett, amely a futási környezet általánosítását és támogatását célozta. Ennek eredményeként jött létre a Berkeley Open Infrastructure for Network Computing, röviden BOINC,^9 amelyet olyan projektek számára tettek elérhetővé, amelyek hasonló módon kívántak elosztott számítási erőforrásokat igénybe venni. A BOINC infrastruktúrát több mint harminc tudományos projekt használja; ezekben közel 800 000 aktív számítógép vesz részt, az összesített számítási teljesítmény pedig meghaladja a 40 petaFLOP/s értéket.
-
-^9 https://boinc.berkeley.edu/
 
 Hasonló, de a BOINC ernyőjén kívül működő projekt a Folding@home, amely a fehérjeszerkezet-kutatás egyik fontos platformja. A könyv írásának idején a projekt kiemelt célja olyan molekulák keresése volt, amelyek potenciális gyógyszerjelöltként szolgálhatnak a COVID-19 vírus elleni küzdelemben.
 
@@ -2615,5 +2605,19 @@ Tudjuk, hogy a jövő soha nem jelezhető előre teljes pontossággal, de nagy b
 A felhőszolgáltatók mindent megtesznek majd rendszereik rendelkezésre állásának, megbízhatóságának és biztonságának további javításáért, és várható, hogy a növekvő verseny, valamint a tiszta energia használata hosszú távon csökkenteni fogja az árakat, így a felhőrendszerek és a felhőalapú számítástechnika megfizethető és megbízható platformmá válik az emberiség számára. Több olyan tendencia is látható, amely a jövő felhőalapú számítástechnikáját még izgalmasabbá teszi, mint amilyen ma. A nagy teljesítményű számítástechnika és a mesterséges intelligencia egyaránt utat talál a felhőrendszerekbe. Várható, hogy a felhőszolgáltatók hamarosan igény szerint elérhető szuperszámítógépes erőforrásokat, valamint kifejezetten MI-terhelésekre tervezett infrastruktúrához való hozzáférést kínálnak majd. Ez platformot biztosít az innovációnak, és akár új szolgáltatások, sőt új iparágak kialakulásához is vezethet. A Dolgok Internete (IoT) alapú adatelemzés várhatóan forradalmasítja a gyártást és a logisztikát. Ha testszenzorokkal, valamint felhőalapú egészségügyi és diagnosztikai rendszerekkel párosul, a felhőalapú számítástechnika az egészségügyi rendszerünket is forradalmasíthatja.
 
 Ezek csak néhány példák, vagy inkább pillanatképek voltak arról, mit hozhat a jövő a felhőalapú számítástechnikában, de azt biztosan kijelenthetjük, hogy ez a jövő fényes és izgalmas. Szóval ne maradj le, figyeld a trendeket, és válj te is a jövő részévé!
+
+
+
+## Lábjegyzetek
+
+^5 https://www.programminglogic.com/example-of-client-server-program-in-c-using-sockets-and-tcp/
+
+^6 https://www.cprogramming.com/tutorial/rpc/remote_procedure_call_start.html
+
+^7 https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
+
+^8 https://setiathome.berkeley.edu/sah_papers/cacm.php
+
+^9 https://boinc.berkeley.edu/
 
 ## Irodalomjegyzék
